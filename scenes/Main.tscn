@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://brjqnm48xfo"]
+[gd_scene load_steps=4 format=4 uid="uid://brjqnm48xfo"]
 
 [ext_resource type="Texture2D" uid="uid://d2pec5cxiqlyd" path="res://icon.svg" id="1_elqb8"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_elqb8"]
+texture = ExtResource("1_elqb8")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rvslj"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_elqb8")
+
 [node name="Node2D" type="Node2D"]
 
-[node name="Icon" type="Sprite2D" parent="."]
-position = Vector2(545, 290)
-texture = ExtResource("1_elqb8")
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAACAAMAAAAAAAAAAAAEAAEAAAAAAAAAAAAHAAMAAAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rvslj")
