@@ -23,3 +23,10 @@ offset_top = 42.0
 offset_right = 731.0
 offset_bottom = 88.0
 text = "hello there :33333"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 231.0
+offset_top = 41.0
+offset_right = 404.0
+offset_bottom = 87.0
+text = "test"
