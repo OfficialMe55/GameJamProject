@@ -1,2 +1,7 @@
+<<<<<<< HEAD
 .godot/
 scenes/mainTest.tscn
+=======
+.godot
+scenes/mainTest
+>>>>>>> 2c0b1f042c335abca325670c010f4f7978fee035
