@@ -1,8 +1,10 @@
 extends CharacterBody3D
 
+class_name myPlayer
 
 const SPEED: float = 15.0
 
+var test
 
 func _physics_process(_delta: float):
 

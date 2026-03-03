@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0hhwqjuc31ec"]
 
 [ext_resource type="Texture2D" uid="uid://dxtuv3r3qiqws" path="res://assets/pondPH.png" id="1_p1dus"]
-[ext_resource type="Script" uid="uid://b5buvjn7hjtqn" path="res://scripts/Pond.gd" id="2_0hmqt"]
+[ext_resource type="Script" uid="uid://cgs3osgcwl102" path="res://scripts/Pond.gd" id="2_0hmqt"]
 
 [sub_resource type="GDScript" id="GDScript_p1dus"]
 
