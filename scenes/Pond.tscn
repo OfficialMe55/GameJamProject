@@ -27,5 +27,8 @@ script = ExtResource("2_0hmqt")
 [node name="InterractionArea" type="CollisionShape3D" parent="interractionArea"]
 shape = SubResource("CylinderShape3D_0hmqt")
 
+[node name="Marker3D" type="Marker3D" parent="interractionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9877195, 0, 0.5415821)
+
 [connection signal="body_entered" from="interractionArea" to="interractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="interractionArea" to="interractionArea" method="_on_body_exited"]
