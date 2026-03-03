@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0hhwqjuc31ec"]
+
+[ext_resource type="Texture2D" uid="uid://dxtuv3r3qiqws" path="res://assets/pondPH.png" id="1_p1dus"]
+[ext_resource type="Script" uid="uid://b5buvjn7hjtqn" path="res://scripts/Pond.gd" id="2_0hmqt"]
+
+[sub_resource type="GDScript" id="GDScript_p1dus"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_p1dus"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0hmqt"]
+radius = 0.83203125
+
+[node name="StaticBody3D" type="StaticBody3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+script = SubResource("GDScript_p1dus")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(-0.12, -1.0490733e-08, 4.585645e-16, 0, -5.2453664e-09, -0.12, 1.0490733e-08, -0.12, 5.2453664e-09, 0, 0, 0)
+texture = ExtResource("1_p1dus")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_p1dus")
+
+[node name="interractionArea" type="Area3D" parent="."]
+script = ExtResource("2_0hmqt")
+
+[node name="InterractionArea" type="CollisionShape3D" parent="interractionArea"]
+shape = SubResource("CylinderShape3D_0hmqt")
+
+[connection signal="body_entered" from="interractionArea" to="interractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="interractionArea" to="interractionArea" method="_on_body_exited"]

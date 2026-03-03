@@ -1,5 +1,6 @@
 .godot/
 scenes/mainTest.tscn
+project.godot
 *.uid
 *.mono
 *.cache
