@@ -18,7 +18,7 @@ func start():
 			print(currentInterBox.weight)
 	
 	currentPoint = currentInterBox.points.get_child(0)
-	changePoint()
+	newPoint()
 	
 	print("shit happens")
 
@@ -27,16 +27,27 @@ func update(delta):
 	player.normalMovement()
 	
 	if stopVector.x ==  1 and currentPoint.global_position.x - player.global_position.x < 0:
-		currentPoint = currentPoint.nextPoint
 		changePoint()
 	if stopVector.x == -1 and currentPoint.global_position.x - player.global_position.x > 0:
-		currentPoint = currentPoint.nextPoint
 		changePoint()
-
+	
+	if stopVector.y ==  1 and currentPoint.global_position.y - player.global_position.y < 0:
+		changePoint()
+	if stopVector.y == -1 and currentPoint.global_position.y - player.global_position.y > 0:
+		changePoint()
+	
 func End():
 	pass
 
 func changePoint():
+	if currentPoint.nextPoint != null:
+		currentPoint = currentPoint.nextPoint
+		newPoint()
+	else:
+		player.changeState(player.default_movement)
+	
+
+func newPoint():
 	moveVector = currentPoint.global_position - player.global_position
 	if currentPoint.global_position.x - player.global_position.x > 0:
 		stopVector.x = 1
