@@ -10,7 +10,7 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0hmqt"]
 radius = 0.83203125
 
-[node name="StaticBody3D" type="StaticBody3D"]
+[node name="Pond" type="StaticBody3D"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = SubResource("GDScript_p1dus")
 
@@ -21,9 +21,9 @@ texture = ExtResource("1_p1dus")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_p1dus")
 
-[node name="interractionArea" type="Area3D" parent="." node_paths=PackedStringArray("points")]
+[node name="interractionArea" type="Area3D" parent="." node_paths=PackedStringArray("fishingSpot")]
 script = ExtResource("2_0hmqt")
-points = NodePath("")
+fishingSpot = NodePath("../FishingSpot")
 weight = 1
 
 [node name="InterractionArea" type="CollisionShape3D" parent="interractionArea"]
@@ -31,6 +31,13 @@ shape = SubResource("CylinderShape3D_0hmqt")
 
 [node name="FishingSpot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9478421, 0, -0.5345533)
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97611123, 0)
+radius = 0.7
+height = 0.5
+vertices = PackedVector3Array(-0.2116858, 0, -0.091735266, 0.17380214, 0, -0.07330704, 0.11864176, 0, 0.15126458, -0.1303164, 0, 0.16488504)
+affect_navigation_mesh = true
 
 [connection signal="body_entered" from="interractionArea" to="interractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="interractionArea" to="interractionArea" method="_on_body_exited"]

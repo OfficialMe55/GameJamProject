@@ -22,7 +22,7 @@ func start():
 	
 	print("shit happens")
 
-func update(delta):
+func update(_delta):
 	player.direction = Vector3(moveVector.x, 0, moveVector.z).normalized()
 	player.normalMovement()
 	

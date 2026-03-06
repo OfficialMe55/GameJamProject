@@ -2,6 +2,8 @@ extends Node
 
 class_name State
 
+var fishingAble: bool = false
+
 var player: myPlayer
 
 func _ready() -> void:

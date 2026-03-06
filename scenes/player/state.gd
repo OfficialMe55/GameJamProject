@@ -3,7 +3,7 @@ extends State
 func start():
 	pass
 
-func update(_delta):
+func update(delta):
 	pass
 
 func End():
