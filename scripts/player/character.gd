@@ -41,7 +41,6 @@ func getInput():
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 func normalMovement():
-	
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
