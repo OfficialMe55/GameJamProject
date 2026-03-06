@@ -10,6 +10,8 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 #states
 @onready var default_movement: Node = $states/defaultMovement
 @onready var move_to_point: Node = $states/moveToPoint
+@onready var fishing: Node = $states/fishing
+
 
 var currentState: State
 var isInInteractionBox: bool
