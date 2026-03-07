@@ -8,9 +8,6 @@ var playerNode: myPlayer
 @export var weight: int
 
 
-func _ready():
-	pass
-	set_process(false)
 
 func _on_body_entered(body: myPlayer) -> void:
 	print("player entered")

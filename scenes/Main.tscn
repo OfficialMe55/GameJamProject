@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=4 uid="uid://dr0jd8wuvp3ch"]
+[gd_scene load_steps=17 format=4 uid="uid://dr0jd8wuvp3ch"]
 
 [ext_resource type="PackedScene" uid="uid://busxu8rldrpc5" path="res://scenes/player/Character.tscn" id="1_elqb8"]
 [ext_resource type="Script" uid="uid://pw6kstghk7eq" path="res://scripts/misc/camera_3d.gd" id="1_rarhs"]
 [ext_resource type="Script" uid="uid://n8lsp4cjcmb1" path="res://scripts/misc/hideSubViewportContainer.gd" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://hq2jc6etj8fl" path="res://assets/grass_tileset.png" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://c0hhwqjuc31ec" path="res://scenes/Pond.tscn" id="5_vcsgt"]
+[ext_resource type="PackedScene" uid="uid://crsvqhcjq6pt" path="res://scenes/human.tscn" id="6_c01mt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8u5g"]
 texture = ExtResource("2_rvslj")
@@ -226,3 +227,66 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.1, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/plane/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_0bbpv")
+
+[node name="Human" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 4.6560597, 0.15470612, -9.810477)
+
+[node name="Human2" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -8.811918, 0.15470994, 7.092453)
+
+[node name="Human3" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 11.505068, 0.15470612, 13.0581665)
+
+[node name="Human4" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -12.007772, 0.15470612, -11.895676)
+
+[node name="Human5" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -19.96851, 0.15470612, 29.355537)
+
+[node name="Human6" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 15.256591, 0.15470612, 0.63707733)
+
+[node name="Human7" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 15.434262, 0.15470612, -27.64656)
+
+[node name="Human8" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -25.670113, 0.1547023, -4.8776855)
+
+[node name="Human9" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 1.9696839, 0.1547023, 14.567902)
+
+[node name="Human10" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -11.2788515, 0.15470994, 19.97533)
+
+[node name="Human11" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -16.409027, 0.15470612, 11.769245)
+
+[node name="Human12" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 0.42451358, 0.15470612, 15.323433)
+
+[node name="Human13" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 8.548969, 0.15470612, -7.6789856)
+
+[node name="Human14" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -9.320292, 0.15470612, -11.263916)
+
+[node name="Human15" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -23.23988, 0.15470612, 9.954262)
+
+[node name="Human16" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 15.838169, 0.15470612, 19.720753)
+
+[node name="Human17" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 17.511057, 0.15470612, 3.7381706)
+
+[node name="Human18" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 6.7155876, 0.15470994, -17.007782)
+
+[node name="Human19" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -2.2825022, 0.15470612, -17.097038)
+
+[node name="Human20" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -13.493001, 0.1547023, -1.4438095)
+
+[node name="Human21" parent="." instance=ExtResource("6_c01mt")]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, -5.691968, 0.15470612, 11.913544)

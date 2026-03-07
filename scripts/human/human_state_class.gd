@@ -1,13 +1,11 @@
 extends Node
 
-class_name State
+class_name humanState
 
-var fishingAble: bool = false
-
-var player: myPlayer
+var human: myHuman
 
 func _ready() -> void:
-	player = $"../.."
+	human = $"../.."
 
 func start():
 	pass

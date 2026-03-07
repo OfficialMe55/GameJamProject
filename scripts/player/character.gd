@@ -7,6 +7,8 @@ const SPEED: float = 15.0
 var input_dir := Input.get_vector("left", "right", "up", "down")
 var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
+@export var humanHook: Marker3D
+
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
 #states
@@ -14,21 +16,23 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 @onready var move_to_point: Node = $states/moveToPoint
 @onready var fishing: Node = $states/fishing
 @onready var navigationMovement: Node = $states/navigationMovement
-
+@onready var carryingHuman: Node = $states/CarryingHuman
 
 var currentState: State
 var isInInteractionBox: bool
 var interactionBoxes: Array[Area3D]
 var interactionTarget: Area3D
 
+var carriedHuman: myHuman
+
 var navigationTarget: Vector3
 
 func _ready() -> void:
 	currentState = default_movement
 	currentState.start()
-
-func _physics_process(_delta: float):
 	
+	
+func _physics_process(_delta: float):
 	#update state
 	currentState.update(_delta)
 	velocity.y = 0                 #bleeerp! im sorry :(
@@ -77,4 +81,9 @@ func navMovement():
 				
 	else:
 		print("no target, navigation aborted")
+		changeState(default_movement)
+
+func dropHuman():
+	if Input.is_action_just_pressed("interract"):
+		carriedHuman.changeState(carriedHuman.freeRoam)
 		changeState(default_movement)

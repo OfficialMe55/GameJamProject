@@ -12,6 +12,7 @@ radius = 0.83203125
 
 [node name="Pond" type="StaticBody3D"]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+collision_mask = 5
 script = SubResource("GDScript_p1dus")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -22,6 +23,8 @@ texture = ExtResource("1_p1dus")
 shape = SubResource("CylinderShape3D_p1dus")
 
 [node name="interractionArea" type="Area3D" parent="." node_paths=PackedStringArray("fishingSpot")]
+collision_layer = 3
+collision_mask = 5
 script = ExtResource("2_0hmqt")
 fishingSpot = NodePath("../FishingSpot")
 weight = 2
