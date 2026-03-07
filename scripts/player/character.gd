@@ -83,7 +83,11 @@ func navMovement():
 		print("no target, navigation aborted")
 		changeState(default_movement)
 
+#func dropHuman():
+	#if Input.is_action_just_pressed("interract"):
+		#carriedHuman.changeState(carriedHuman.freeRoam)
+		#changeState(default_movement)
+
 func dropHuman():
-	if Input.is_action_just_pressed("interract"):
-		carriedHuman.changeState(carriedHuman.freeRoam)
-		changeState(default_movement)
+	carriedHuman.changeState(carriedHuman.freeRoam)
+	changeState(default_movement)

@@ -5,4 +5,8 @@ extends State
 func update(_delta):
 	player.getInput()
 	player.normalMovement()
-	player.dropHuman()
+	
+	#state change
+	
+	if Input.is_action_just_pressed("interract"):
+		player.dropHuman()
