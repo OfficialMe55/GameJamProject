@@ -19,7 +19,7 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 var currentState: State
 var isInInteractionBox: bool
 var interactionBoxes: Array[Area3D]
-var interractionTarget: Area3D
+var interactionTarget: Area3D
 
 var navigationTarget: Vector3
 
@@ -31,7 +31,7 @@ func _physics_process(_delta: float):
 	
 	#update state
 	currentState.update(_delta)
-
+	velocity.y = 0                 #bleeerp! im sorry :(
 	move_and_slide()
 
 func changeState(nextState: State):
@@ -53,24 +53,27 @@ func normalMovement():
 
 
 #in future select interaction target more intelligently using weights
-func interract():
+func interact():
 	if Input.is_action_just_pressed("interract"):
 		if not interactionBoxes.is_empty():
-			interractionTarget = interactionBoxes[0]
-			interractionTarget.interract()
+			var currentweight: int = 0
+			for interactionBox in interactionBoxes:
+				if interactionBox.weight > currentweight:
+					interactionTarget = interactionBox
+					currentweight = interactionBox.weight
+			interactionTarget.interact()
 
 func navMovement():
 	if navigationTarget:
-		print(navigationTarget)
 		nav_agent.target_position = navigationTarget
 		var next_path_pos := nav_agent.get_next_path_position()
-		var direction := global_position.direction_to(next_path_pos)
-		velocity = direction * SPEED
+		var navDirection := global_position.direction_to(next_path_pos)
+		velocity = navDirection * SPEED
 
 		if nav_agent.is_navigation_finished():
 				print("target found")
 				navigationTarget = Vector3.ZERO
-				interractionTarget.interract()
+				interactionTarget.interact()
 				
 	else:
 		print("no target, navigation aborted")

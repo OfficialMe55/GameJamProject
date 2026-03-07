@@ -24,7 +24,7 @@ func _on_body_exited(body: myPlayer) -> void:
 	body.isInInteractionBox = false
 	body.interactionBoxes.erase(self)
 
-func interract():
+func interact():
 	if playerNode.global_position.distance_to(fishingSpot.global_position) > 1:
 		print("shit happens")
 		playerNode.changeState(playerNode.navigationMovement)

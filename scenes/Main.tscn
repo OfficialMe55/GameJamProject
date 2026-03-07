@@ -219,7 +219,7 @@ skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_c01mt")
 
 [node name="Pond" parent="NavigationRegion3D/plane" instance=ExtResource("5_vcsgt")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.08754349, 0.100003816, -0.00092315674)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.1, 0)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/plane"]
 

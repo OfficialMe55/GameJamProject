@@ -24,7 +24,7 @@ shape = SubResource("CylinderShape3D_p1dus")
 [node name="interractionArea" type="Area3D" parent="." node_paths=PackedStringArray("fishingSpot")]
 script = ExtResource("2_0hmqt")
 fishingSpot = NodePath("../FishingSpot")
-weight = 1
+weight = 2
 
 [node name="InterractionArea" type="CollisionShape3D" parent="interractionArea"]
 shape = SubResource("CylinderShape3D_0hmqt")

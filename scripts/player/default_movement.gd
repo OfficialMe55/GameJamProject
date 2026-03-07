@@ -8,7 +8,7 @@ func start():
 func update(_delta):
 	player.getInput()
 	player.normalMovement()
-	player.interract()
+	player.interact()
 
 func End():
 	pass
