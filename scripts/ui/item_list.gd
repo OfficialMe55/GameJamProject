@@ -1,9 +1,9 @@
 extends TabContainer
 
-@onready var ui: UiParent = $"../.."
+@export var ui: UiParent
 
-@onready var deco_item_list: ItemList = $decoItemList
-@onready var upgade_item_list: ItemList = $upgadeItemList
+@export var deco_item_list: Control
+@export var upgade_item_list: Control
 
 
 # Called when the node enters the scene tree for the first time.

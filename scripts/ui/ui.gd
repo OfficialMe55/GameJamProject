@@ -1,11 +1,14 @@
 extends Control
 
 class_name UiParent
+@onready var player: myPlayer = $"../../Player"
+
+@export var tab_container: TabContainer
 
 @export var availableDecoItems: Array[String]
 @export var availableUpgrades: Array[String]
 
-@onready var tab_container: TabContainer = $PanelContainer/TabContainer
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -15,7 +18,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if Input.is_action_just_pressed("ui_cancel"):
+		disappear()
+		player.changeState(player.default_movement)
 
 func appear():
 	visible = true
@@ -23,3 +28,9 @@ func appear():
 
 func disappear():
 	visible = false
+	tab_container.stop()
+
+
+# money stuff
+
+@export var label: Label
