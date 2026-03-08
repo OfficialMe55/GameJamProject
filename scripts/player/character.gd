@@ -17,8 +17,10 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 @onready var fishing: Node = $states/fishing
 @onready var navigationMovement: Node = $states/navigationMovement
 @onready var carryingHuman: Node = $states/CarryingHuman
+@onready var shop: Node = $states/shop
 
 var currentState: State
+
 var isInInteractionBox: bool
 var interactionBoxes: Array[Area3D]
 var interactionTarget: Area3D

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dluf7b1uv0fsa"]
+
+[ext_resource type="Script" uid="uid://dywidr3t33ljd" path="res://scripts/shop.gd" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://dxtuv3r3qiqws" path="res://assets/pondPH.png" id="2_xfvoa"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xfvoa"]
+radius = 4.1831055
+
+[node name="Shop" type="Node3D"]
+
+[node name="interractionArea" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1_lx5au")
+weight = 2
+
+[node name="InterractionArea" type="CollisionShape3D" parent="interractionArea"]
+shape = SubResource("CylinderShape3D_xfvoa")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+axis = 1
+texture = ExtResource("2_xfvoa")
+region_enabled = true
+region_rect = Rect2(637.7765, 198.14674, 21.98944, 22.112274)
+
+[connection signal="body_entered" from="interractionArea" to="interractionArea" method="_on_body_entered"]
+[connection signal="body_exited" from="interractionArea" to="interractionArea" method="_on_body_exited"]

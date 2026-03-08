@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://co0r6gj64kibh"]
+
+[ext_resource type="Script" uid="uid://cl38kgjaqku7f" path="res://scripts/ui/ui.gd" id="1_nt7q6"]
+[ext_resource type="Script" uid="uid://vecoab674hjv" path="res://scripts/ui/item_list.gd" id="3_yev5y"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nt7q6")
+availableDecoItems = Array[String](["decoItem1", "decoItem2"])
+availableUpgrades = Array[String](["upgrade1", "upgrade2", "upgrade3"])
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -293.0
+offset_top = -164.0
+offset_right = 293.0
+offset_bottom = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="PanelContainer"]
+layout_mode = 2
+current_tab = 0
+script = ExtResource("3_yev5y")
+
+[node name="decoItemList" type="ItemList" parent="PanelContainer/TabContainer"]
+layout_mode = 2
+max_columns = 10
+icon_mode = 0
+metadata/_tab_index = 0
+
+[node name="upgadeItemList" type="ItemList" parent="PanelContainer/TabContainer"]
+visible = false
+layout_mode = 2
+max_columns = 10
+metadata/_tab_index = 1
