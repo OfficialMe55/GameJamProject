@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bp75xdto7ee1c"]
+
+[ext_resource type="Script" uid="uid://ch3oqeoxvcqpb" path="res://scripts/EmotionOrb/emotions_orb.gd" id="1_42vyu"]
+[ext_resource type="Material" uid="uid://dx18q1lw6w05n" path="res://shaders/Materials/LoveOrb.tres" id="2_42vyu"]
+[ext_resource type="Texture2D" path="res://assets/Emotion Orbs/sad.png" id="2_nu3tx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nu3tx"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_sm6a7"]
+material = ExtResource("2_42vyu")
+
+[node name="EmotionsOrb" type="RigidBody3D" node_paths=PackedStringArray("mesh", "sprite")]
+collision_layer = 0
+script = ExtResource("1_42vyu")
+mesh = NodePath("MeshInstance3D")
+sprite = NodePath("Sprite3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_nu3tx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_sm6a7")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture = ExtResource("2_nu3tx")

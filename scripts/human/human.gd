@@ -12,6 +12,9 @@ const GRAVITY: float = -3.0
 @onready var freeRoam: humanState = $"states/freeRoam" 
 @onready var carried: humanState = $"states/carried" 
 
+
+@export var EmotionsLabel: Label3D
+
 var player: myPlayer
 
 var navigationTarget: Vector3

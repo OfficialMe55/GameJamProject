@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=3 uid="uid://busxu8rldrpc5"]
 
-[ext_resource type="Script" uid="uid://cac4ta45r4v27" path="res://scripts/player/character.gd" id="1_3i3nt"]
+[ext_resource type="Script" uid="uid://kab8bnstwfgj" path="res://scripts/player/character.gd" id="1_3i3nt"]
 [ext_resource type="Texture2D" uid="uid://bp0hc18rkltmr" path="res://assets/Creature.png" id="1_53v7d"]
-[ext_resource type="Script" uid="uid://d3vgjaj341dvy" path="res://scripts/player/default_movement.gd" id="3_ts1ca"]
-[ext_resource type="Script" uid="uid://bauw2pcwfobkh" path="res://scripts/player/move_to_point.gd" id="4_lggus"]
-[ext_resource type="Script" uid="uid://dsok4sigrniir" path="res://scripts/player/fishing.gd" id="5_ncccj"]
-[ext_resource type="Script" uid="uid://bqq21ajy77b0" path="res://scripts/player/navigation_movement.gd" id="6_r8ho8"]
-[ext_resource type="Script" uid="uid://bcsmna7m0kg2y" path="res://scenes/player/carrying_human.gd" id="7_uxdko"]
-[ext_resource type="Script" uid="uid://dbjrcnki8ebc7" path="res://scripts/human/shop.gd" id="8_lqr8u"]
+[ext_resource type="Script" uid="uid://bsfh82i4qv7wa" path="res://scripts/player/default_movement.gd" id="3_ts1ca"]
+[ext_resource type="Script" uid="uid://cn04ixxm25ubn" path="res://scripts/player/move_to_point.gd" id="4_lggus"]
+[ext_resource type="Script" uid="uid://d2ttmwrh864t" path="res://scripts/player/fishing.gd" id="5_ncccj"]
+[ext_resource type="Script" uid="uid://winl8ono1xl6" path="res://scripts/player/navigation_movement.gd" id="6_r8ho8"]
+[ext_resource type="Script" uid="uid://cyncbisbemmyy" path="res://scenes/player/carrying_human.gd" id="7_uxdko"]
+[ext_resource type="Script" uid="uid://46ughyppvwmi" path="res://scripts/human/shop.gd" id="8_lqr8u"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3i3nt"]
 radius = 1.5048828
@@ -33,21 +33,20 @@ texture = ExtResource("1_53v7d")
 [node name="defaultMovement" type="Node" parent="states"]
 script = ExtResource("3_ts1ca")
 
-[node name="moveToPoint" type="Node" parent="states"]
-script = ExtResource("4_lggus")
-
-[node name="fishing" type="Node" parent="states"]
-script = ExtResource("5_ncccj")
-
 [node name="navigationMovement" type="Node" parent="states"]
 script = ExtResource("6_r8ho8")
+
+[node name="moveToPoint" type="Node" parent="states"]
+script = ExtResource("4_lggus")
 
 [node name="CarryingHuman" type="Node" parent="states"]
 script = ExtResource("7_uxdko")
 
+[node name="fishing" type="Node" parent="states"]
+script = ExtResource("5_ncccj")
+
 [node name="shop" type="Node" parent="states"]
 script = ExtResource("8_lqr8u")
-metadata/_custom_type_script = "uid://cjxymms7eyc2t"
 
 [node name="HumanHook" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5536195, 3.8752341, 0.53835285)

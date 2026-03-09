@@ -15,6 +15,10 @@ run/main_scene="uid://dr0jd8wuvp3ch"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://scripts/misc/Global.gd"
+
 [gui]
 
 theme/default_font_multichannel_signed_distance_field=true

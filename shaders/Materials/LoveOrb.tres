@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dx18q1lw6w05n"]
+
+[ext_resource type="Shader" uid="uid://d3bjiyx7nea8y" path="res://shaders/OrbShader.gdshader" id="1_uet7j"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_uet7j")
+shader_parameter/outline_color = Color(1, 0.27058825, 0.4392157, 1)
+shader_parameter/outline_strength = 2.0
+shader_parameter/outline_power = 3.0

@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://crsvqhcjq6pt"]
+[gd_scene load_steps=9 format=3 uid="uid://crsvqhcjq6pt"]
 
 [ext_resource type="Script" uid="uid://8b3yu3qre4jr" path="res://scripts/human/human.gd" id="1_cwf78"]
 [ext_resource type="Texture2D" uid="uid://vjwfpmwa5bwb" path="res://assets/humanPH.png" id="1_swaxu"]
+[ext_resource type="Script" uid="uid://cuo84qqr1ri52" path="res://scripts/human/human_emotions.gd" id="2_c7jhf"]
 [ext_resource type="Script" uid="uid://daykyk4j4mcd7" path="res://scripts/human/free_roam.gd" id="2_cwf78"]
 [ext_resource type="Script" uid="uid://o8dq6ohuybnb" path="res://scripts/human/human_interraction_area.gd" id="3_mayv3"]
-[ext_resource type="Script" uid="uid://c6yfa13ngyha5" path="res://scenes/carried.gd" id="5_denma"]
+[ext_resource type="Script" uid="uid://c6yfa13ngyha5" path="res://scripts/carried.gd" id="5_denma"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_swaxu"]
 height = 6.0
@@ -14,11 +15,12 @@ radius = 2.0
 height = 6.0
 radius = 4.0
 
-[node name="Human" type="CharacterBody3D"]
+[node name="Human" type="CharacterBody3D" node_paths=PackedStringArray("EmotionsLabel")]
 transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_cwf78")
+EmotionsLabel = NodePath("labelMarker/EmotionsLabel")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -46,9 +48,35 @@ shape = SubResource("CylinderShape3D_cwf78")
 script = ExtResource("2_cwf78")
 metadata/_custom_type_script = "uid://jmklaqljgo7n"
 
-[node name="carried" type="Node" parent="states"]
+[node name="carried" type="Node" parent="states" node_paths=PackedStringArray("EmotionsTimer")]
 script = ExtResource("5_denma")
+EmotionsTimer = NodePath("../../Emotions/Timer")
 metadata/_custom_type_script = "uid://jmklaqljgo7n"
+
+[node name="Emotions" type="Node" parent="." node_paths=PackedStringArray("body", "emotionsLabel", "emotionsTimer")]
+script = ExtResource("2_c7jhf")
+body = NodePath("..")
+emotionsLabel = NodePath("../labelMarker/EmotionsLabel")
+emotionsTimer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="Emotions"]
+process_callback = 0
+autostart = true
+
+[node name="labelMarker" type="Marker3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 0, 2.7370512, -0.9704093)
+top_level = true
+
+[node name="EmotionsLabel" type="Label3D" parent="labelMarker"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3031168, 2.2554104)
+font_size = 140
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.123505, -3.2346978)
+remote_path = NodePath("../labelMarker")
+update_rotation = false
+update_scale = false
 
 [connection signal="body_entered" from="InterractionArea" to="InterractionArea" method="_on_body_entered"]
 [connection signal="body_exited" from="InterractionArea" to="InterractionArea" method="_on_body_exited"]
+[connection signal="timeout" from="Emotions/Timer" to="Emotions" method="_on_timer_timeout"]
