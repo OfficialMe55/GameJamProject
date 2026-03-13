@@ -8,11 +8,15 @@ extends TabContainer
 
 # Called when the node enters the scene tree for the first time.
 func start():
-	for i in range(ui.availableDecoItems.size()):
-		print(1)
-		print(ui.availableDecoItems)
-		deco_item_list.add_child(ItemContainer.createItemContainer(ui.availableDecoItems[i], 1.99, 7))
-		
+	#for i in range(ui.availableDecoItems.size()):
+		#print(1)
+		#print(ui.availableDecoItems)
+		#deco_item_list.add_child(ItemContainer.createItemContainer(ui.availableDecoItems[i], 1.99, 7))
+		#
+	
+	deco_item_list.add_child(ItemContainer.createItemContainer("newItem", 12.99, 21))
+	
+	
 	
 	print("z" + str(ui.availableUpgrades.size()))
 	for i in range(ui.availableUpgrades.size()):

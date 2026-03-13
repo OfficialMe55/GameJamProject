@@ -23,10 +23,12 @@ func _process(delta: float) -> void:
 		player.changeState(player.default_movement)
 
 func appear():
+	set_process(true)
 	visible = true
 	tab_container.start()
 
 func disappear():
+	set_process(false)
 	visible = false
 	tab_container.stop()
 

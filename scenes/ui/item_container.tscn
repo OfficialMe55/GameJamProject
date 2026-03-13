@@ -27,7 +27,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="itemContainerrrrrrrrrrrrrrrrrrrrrrrrrr" type="PanelContainer" node_paths=PackedStringArray("nameLabel", "prizeLabel", "stockLabel")]
+[node name="itemContainer" type="PanelContainer" node_paths=PackedStringArray("nameLabel", "prizeLabel", "stockLabel")]
 theme_override_styles/panel = SubResource("StyleBoxFlat_ktti3")
 script = ExtResource("1_b73rr")
 nameLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/nameLabel")
