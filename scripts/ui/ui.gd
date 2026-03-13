@@ -1,7 +1,6 @@
 extends Control
 
-class_name UiParent
-@onready var player: myPlayer = $"../../Player"
+@onready var player: myPlayer = $"../../../Player"
 
 @export var tab_container: TabContainer
 

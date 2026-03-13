@@ -1,6 +1,6 @@
 extends TabContainer
 
-@export var ui: UiParent
+@export var ui: Control
 
 @export var deco_item_list: Control
 @export var upgade_item_list: Control
@@ -16,9 +16,6 @@ func start():
 	
 	deco_item_list.add_child(ItemContainer.createItemContainer("newItem", 12.99, 21))
 	
-	
-	
-	print("z" + str(ui.availableUpgrades.size()))
 	for i in range(ui.availableUpgrades.size()):
 		
 		print(2)

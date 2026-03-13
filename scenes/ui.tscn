@@ -1,9 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://co0r6gj64kibh"]
+[gd_scene load_steps=20 format=3 uid="uid://co0r6gj64kibh"]
 
+[ext_resource type="Script" uid="uid://cvolqrwdeo72" path="res://scripts/ui/uiReference.gd" id="1_8dubc"]
 [ext_resource type="Script" uid="uid://cl38kgjaqku7f" path="res://scripts/ui/ui.gd" id="1_nt7q6"]
 [ext_resource type="StyleBox" uid="uid://cratlky1u7apg" path="res://resourcers/items_container.tres" id="3_gdt2y"]
 [ext_resource type="Script" uid="uid://clk5sq6pb34eb" path="res://scripts/ui/tab.gd" id="3_wm3ai"]
 [ext_resource type="Script" uid="uid://vecoab674hjv" path="res://scripts/ui/item_list.gd" id="3_yev5y"]
+[ext_resource type="PackedScene" uid="uid://bntnotsir0w3i" path="res://scenes/player/Ui/HUDEomtion.tscn" id="6_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://7tsnpwi8s25e" path="res://assets/Emotion Orbs/anger.png" id="7_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://fnhwcuhfbxb4" path="res://assets/Emotion Orbs/sadness.png" id="8_6rmj2"]
+[ext_resource type="Texture2D" uid="uid://wb5iwpnur8i7" path="res://assets/Emotion Orbs/boredom.png" id="9_vsj0x"]
+[ext_resource type="Texture2D" uid="uid://dofdjt2xmqfht" path="res://assets/Emotion Orbs/happiness.png" id="10_qsv74"]
+[ext_resource type="Texture2D" uid="uid://d5vc5bdfpnds" path="res://assets/Emotion Orbs/love.png" id="11_h1mc3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4jx1"]
 
@@ -36,19 +43,20 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="Ui" type="Control" node_paths=PackedStringArray("tab_container")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdt2y"]
+
+[node name="Ui" type="Control" node_paths=PackedStringArray("shopUi")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_nt7q6")
-tab_container = NodePath("PanelContainer/VBoxContainer/TabContainer")
-availableDecoItems = Array[String](["decoItem1", "decoItem2", ""])
-availableUpgrades = Array[String](["upgrade1", "upgrade2", "upgrade3"])
+script = ExtResource("1_8dubc")
+shopUi = NodePath("shopUi")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="shopUi" type="PanelContainer" parent="." node_paths=PackedStringArray("tab_container")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -62,12 +70,15 @@ offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_x4jx1")
+script = ExtResource("1_nt7q6")
+tab_container = NodePath("VBoxContainer/TabContainer")
+availableDecoItems = Array[String](["1", "2"])
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="shopUi"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="TabContainer" type="TabContainer" parent="PanelContainer/VBoxContainer" node_paths=PackedStringArray("ui", "deco_item_list", "upgade_item_list")]
+[node name="TabContainer" type="TabContainer" parent="shopUi/VBoxContainer" node_paths=PackedStringArray("ui", "deco_item_list", "upgade_item_list")]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
@@ -77,72 +88,72 @@ theme_override_styles/tab_selected = SubResource("StyleBoxFlat_wm3ai")
 tab_alignment = 1
 current_tab = 0
 script = ExtResource("3_yev5y")
-ui = NodePath("../../..")
+ui = NodePath("../..")
 deco_item_list = NodePath("deco/MarginContainer/ScrollContainer/decoGrid")
 upgade_item_list = NodePath("upgrades/MarginContainer/ScrollContainer/upgradeGrid")
 
-[node name="deco" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
+[node name="deco" type="PanelContainer" parent="shopUi/VBoxContainer/TabContainer"]
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_gdt2y")
 script = ExtResource("3_wm3ai")
 metadata/_tab_index = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/deco"]
+[node name="MarginContainer" type="MarginContainer" parent="shopUi/VBoxContainer/TabContainer/deco"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/deco/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="shopUi/VBoxContainer/TabContainer/deco/MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_p7vwb")
 
-[node name="decoGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/TabContainer/deco/MarginContainer/ScrollContainer"]
+[node name="decoGrid" type="GridContainer" parent="shopUi/VBoxContainer/TabContainer/deco/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 20
 columns = 4
 
-[node name="upgrades" type="PanelContainer" parent="PanelContainer/VBoxContainer/TabContainer"]
+[node name="upgrades" type="PanelContainer" parent="shopUi/VBoxContainer/TabContainer"]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = ExtResource("3_gdt2y")
 metadata/_tab_index = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/TabContainer/upgrades"]
+[node name="MarginContainer" type="MarginContainer" parent="shopUi/VBoxContainer/TabContainer/upgrades"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer/TabContainer/upgrades/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="shopUi/VBoxContainer/TabContainer/upgrades/MarginContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_p7vwb")
 
-[node name="upgradeGrid" type="GridContainer" parent="PanelContainer/VBoxContainer/TabContainer/upgrades/MarginContainer/ScrollContainer"]
+[node name="upgradeGrid" type="GridContainer" parent="shopUi/VBoxContainer/TabContainer/upgrades/MarginContainer/ScrollContainer"]
 layout_mode = 2
 theme_override_constants/h_separation = 25
 theme_override_constants/v_separation = 20
 columns = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="shopUi/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_cgfq5")
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="shopUi/VBoxContainer/PanelContainer"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="shopUi/VBoxContainer/PanelContainer"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7dvkv")
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="useless" type="Node2D" parent="."]
 visible = false
 
-[node name="deco" type="ItemList" parent="Node2D"]
+[node name="deco" type="ItemList" parent="useless"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -153,10 +164,55 @@ offset_bottom = 191.0
 max_columns = 10
 icon_mode = 0
 
-[node name="upgrades" type="ItemList" parent="Node2D"]
+[node name="upgrades" type="ItemList" parent="useless"]
 visible = false
 offset_left = 283.0
 offset_top = 160.0
 offset_right = 283.0
 offset_bottom = 160.0
 max_columns = 10
+
+[node name="HUD" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Orbs" type="PanelContainer" parent="HUD"]
+layout_mode = 0
+offset_right = 466.0
+offset_bottom = 96.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gdt2y")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Orbs"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/Orbs/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="TextureRect" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+layout_mode = 2
+
+[node name="TextureRect2" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+layout_mode = 2
+texture = ExtResource("8_6rmj2")
+
+[node name="TextureRect3" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+layout_mode = 2
+texture = ExtResource("7_vdcm2")
+
+[node name="TextureRect4" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+layout_mode = 2
+texture = ExtResource("9_vsj0x")
+
+[node name="TextureRect5" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+layout_mode = 2
+texture = ExtResource("10_qsv74")
+
+[node name="TextureRect6" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+layout_mode = 2
+texture = ExtResource("11_h1mc3")

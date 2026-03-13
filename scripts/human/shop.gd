@@ -1,9 +1,9 @@
 extends State
 
-@onready var ui: Control = $"../../../CanvasLayer/Ui"
+@onready var ui: UiParent = $"../../../CanvasLayer/Ui"
 
 func start():
-	ui.appear()
+	ui.shopUi.appear()
 
 func update(delta):
 	pass

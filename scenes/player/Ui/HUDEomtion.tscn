@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://bntnotsir0w3i"]
+
+[ext_resource type="Texture2D" uid="uid://cjud1hp40hla3" path="res://assets/Emotion Orbs/fear.png" id="1_1ent7"]
+
+[node name="TextureRect" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+size_flags_horizontal = 3
+texture = ExtResource("1_1ent7")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 48.0
+offset_right = 72.0
+offset_bottom = 72.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 35.0
+offset_bottom = 41.875
+theme_override_font_sizes/font_size = 30
+text = "0"
