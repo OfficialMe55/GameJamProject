@@ -9,15 +9,25 @@ extends TabContainer
 # Called when the node enters the scene tree for the first time.
 func start():
 	for i in range(ui.availableDecoItems.size()):
-		deco_item_list.add_item(str(ui.availableDecoItems[i]))
+		print(1)
+		print(ui.availableDecoItems)
+		deco_item_list.add_child(ItemContainer.createItemContainer(ui.availableDecoItems[i], 1.99, 7))
+		
 	
+	print("z" + str(ui.availableUpgrades.size()))
 	for i in range(ui.availableUpgrades.size()):
-		upgade_item_list.add_item(str(ui.availableUpgrades[i]))
+		
+		print(2)
+		upgade_item_list.add_child(ItemContainer.createItemContainer(ui.availableUpgrades[i], 5.99, 12))
+		
 	
 
 func stop():
-	deco_item_list.clear()
-	upgade_item_list.clear()
+	for i in range(deco_item_list.get_child_count()):
+		deco_item_list.get_child(i).queue_free()
+	
+	for i in range(upgade_item_list.get_child_count()):
+		upgade_item_list.get_child(i).queue_free()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
