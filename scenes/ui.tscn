@@ -194,25 +194,46 @@ theme_override_constants/margin_bottom = 16
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="TextureRect" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+[node name="TextureRect" parent="HUD/Orbs/MarginContainer/HBoxContainer" node_paths=PackedStringArray("ui") instance=ExtResource("6_vdcm2")]
 layout_mode = 2
+ui = NodePath("../../../../..")
 
-[node name="TextureRect2" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+[node name="TextureRect2" parent="HUD/Orbs/MarginContainer/HBoxContainer" node_paths=PackedStringArray("ui") instance=ExtResource("6_vdcm2")]
 layout_mode = 2
 texture = ExtResource("8_6rmj2")
+ui = NodePath("../../../../..")
+myEmotion = 2
 
-[node name="TextureRect3" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+[node name="TextureRect3" parent="HUD/Orbs/MarginContainer/HBoxContainer" node_paths=PackedStringArray("ui") instance=ExtResource("6_vdcm2")]
 layout_mode = 2
 texture = ExtResource("7_vdcm2")
+ui = NodePath("../../../../..")
+myEmotion = 1
 
-[node name="TextureRect4" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+[node name="TextureRect4" parent="HUD/Orbs/MarginContainer/HBoxContainer" node_paths=PackedStringArray("ui") instance=ExtResource("6_vdcm2")]
 layout_mode = 2
 texture = ExtResource("9_vsj0x")
+ui = NodePath("../../../../..")
+myEmotion = 3
 
-[node name="TextureRect5" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+[node name="TextureRect5" parent="HUD/Orbs/MarginContainer/HBoxContainer" node_paths=PackedStringArray("ui") instance=ExtResource("6_vdcm2")]
 layout_mode = 2
 texture = ExtResource("10_qsv74")
+ui = NodePath("../../../../..")
+myEmotion = 4
 
-[node name="TextureRect6" parent="HUD/Orbs/MarginContainer/HBoxContainer" instance=ExtResource("6_vdcm2")]
+[node name="TextureRect6" parent="HUD/Orbs/MarginContainer/HBoxContainer" node_paths=PackedStringArray("ui") instance=ExtResource("6_vdcm2")]
 layout_mode = 2
 texture = ExtResource("11_h1mc3")
+ui = NodePath("../../../../..")
+myEmotion = 5
+
+[node name="Label2" type="Label" parent="HUD/Orbs/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect" method="_on_ui_collected_emotion"]
+[connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect2" method="_on_ui_collected_emotion"]
+[connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect3" method="_on_ui_collected_emotion"]
+[connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect4" method="_on_ui_collected_emotion"]
+[connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect5" method="_on_ui_collected_emotion"]
+[connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect6" method="_on_ui_collected_emotion"]

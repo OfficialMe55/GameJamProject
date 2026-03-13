@@ -9,6 +9,8 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 
 @export var humanHook: Marker3D
 
+@export var ui: UiParent
+
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
 #states
@@ -56,7 +58,6 @@ func normalMovement():
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
 
 #in future select interaction target more intelligently using weights
 func interact():

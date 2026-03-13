@@ -24,7 +24,7 @@ var textures: Array[Texture] = [
 	load("res://assets/Emotion Orbs/love.png") as Texture2D
 ]
 
-var emotion: int = FEAR #be fear by default
+var emotion: int = Global.EMOTIONS.FEAR #be fear by default
 
 
 # Called when the node enters the scene tree for the first time.
@@ -35,3 +35,21 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
+
+
+
+		#player collect
+
+@export var collectArea: Area3D
+
+
+func _on_area_3d_body_entered(body: Node) -> void:
+	pass
+	#print(body.name)
+	#body.ui.collectedEmotion.emit(emotion)
+
+
+func _on_area_3d_area_entered(area: Area3D) -> void:
+	if area.name == "emotionCollector":
+		area.get_parent().ui.collectedEmotion.emit(emotion)
+		self.queue_free()
