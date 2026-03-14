@@ -5,6 +5,7 @@ class_name myHuman
 const SPEED: float = 5.0
 const GRAVITY: float = -3.0
 
+@export var myHumanType: Global.HUMAN
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 
@@ -14,6 +15,7 @@ const GRAVITY: float = -3.0
 
 
 @export var EmotionsLabel: Label3D
+@export var emotions: Node
 
 var player: myPlayer
 

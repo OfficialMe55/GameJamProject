@@ -1,11 +1,10 @@
 extends Node
 
-enum {FEAR, ANGER, SADNESS, BOREDOM, HAPPINESS, LOVE}
 var Emotions: Array[float] = [0.0, 0.0, 0.0, 0.0, 0.0] 
 
 var orbScene = preload("res://scenes/human/EmotionsOrb.tscn")
 
-var currentEmotion: int = FEAR #Variable probably to be removed
+var currentEmotion: Global.EMOTIONS = Global.EMOTIONS.FEAR #Variable probably to be removed
 
 @export var body: myHuman
 @export var emotionsLabel: Label3D
@@ -14,7 +13,7 @@ var currentEmotion: int = FEAR #Variable probably to be removed
 func _ready() -> void:
 	pass
 
-func _process(_delta: float) -> void:	
+func _process(_delta: float) -> void:
 	
 	
 	if Global.DEBUG:
@@ -27,10 +26,10 @@ func dropEmotionOrb():
 	add_child(instance)
 	instance.global_position = body.global_position
 	
-	
+	return
 	#Cycle through emotions, change it later
-	if currentEmotion == LOVE:
-		currentEmotion = FEAR
+	if currentEmotion == Global.EMOTIONS.LOVE:
+		currentEmotion = Global.EMOTIONS.FEAR
 	else:
 		currentEmotion += 1
 	

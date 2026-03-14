@@ -6,6 +6,16 @@ const FLOATPRECISION = 1000000
 
 enum EMOTIONS {FEAR, ANGER, SADNESS, BOREDOM, HAPPINESS, LOVE}
 
+enum HUMAN {
+	JOE,
+	INFLUENCER,
+	FISHERMAN,
+	BUSINESSMAN,
+	HIKER,
+	CULTIST,
+	INVESTIGATOR
+	}
+
 func addFloat(variable, floatComponent) -> float:
 	variable = variable * FLOATPRECISION
 	floatComponent = round(floatComponent * FLOATPRECISION)

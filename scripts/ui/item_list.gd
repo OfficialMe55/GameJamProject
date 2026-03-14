@@ -17,8 +17,6 @@ func start():
 	deco_item_list.add_child(ItemContainer.createItemContainer("newItem", 12.99, 21))
 	
 	for i in range(ui.availableUpgrades.size()):
-		
-		print(2)
 		upgade_item_list.add_child(ItemContainer.createItemContainer(ui.availableUpgrades[i], 5.99, 12))
 		
 	

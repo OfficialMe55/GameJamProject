@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://crsvqhcjq6pt"]
 
-[ext_resource type="Script" uid="uid://8b3yu3qre4jr" path="res://scripts/human/human.gd" id="1_cwf78"]
+[ext_resource type="Script" uid="uid://yh7ckfrunihk" path="res://scripts/human/human.gd" id="1_cwf78"]
 [ext_resource type="Texture2D" uid="uid://vjwfpmwa5bwb" path="res://assets/humanPH.png" id="1_swaxu"]
-[ext_resource type="Script" uid="uid://cuo84qqr1ri52" path="res://scripts/human/human_emotions.gd" id="2_c7jhf"]
-[ext_resource type="Script" uid="uid://daykyk4j4mcd7" path="res://scripts/human/free_roam.gd" id="2_cwf78"]
-[ext_resource type="Script" uid="uid://o8dq6ohuybnb" path="res://scripts/human/human_interraction_area.gd" id="3_mayv3"]
-[ext_resource type="Script" uid="uid://c6yfa13ngyha5" path="res://scripts/human/carried.gd" id="5_denma"]
+[ext_resource type="Script" uid="uid://mvtvm61417vu" path="res://scripts/human/human_emotions.gd" id="2_c7jhf"]
+[ext_resource type="Script" uid="uid://b60lfk2r65bwp" path="res://scripts/human/free_roam.gd" id="2_cwf78"]
+[ext_resource type="Script" uid="uid://pipge6ar2ljw" path="res://scripts/human/human_interraction_area.gd" id="3_mayv3"]
+[ext_resource type="Script" uid="uid://bjon8702e4bdq" path="res://scripts/human/carried.gd" id="5_denma"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_swaxu"]
 height = 6.0
@@ -15,12 +15,13 @@ radius = 2.0
 height = 6.0
 radius = 4.0
 
-[node name="Human" type="CharacterBody3D" node_paths=PackedStringArray("EmotionsLabel")]
+[node name="Human" type="CharacterBody3D" node_paths=PackedStringArray("EmotionsLabel", "emotions")]
 transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 0, 0, 0)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_cwf78")
 EmotionsLabel = NodePath("labelMarker/EmotionsLabel")
+emotions = NodePath("Emotions")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -46,12 +47,10 @@ shape = SubResource("CylinderShape3D_cwf78")
 
 [node name="freeRoam" type="Node" parent="states"]
 script = ExtResource("2_cwf78")
-metadata/_custom_type_script = "uid://jmklaqljgo7n"
 
 [node name="carried" type="Node" parent="states" node_paths=PackedStringArray("EmotionsTimer")]
 script = ExtResource("5_denma")
 EmotionsTimer = NodePath("../../Emotions/Timer")
-metadata/_custom_type_script = "uid://jmklaqljgo7n"
 
 [node name="Emotions" type="Node" parent="." node_paths=PackedStringArray("body", "emotionsLabel", "emotionsTimer")]
 script = ExtResource("2_c7jhf")
