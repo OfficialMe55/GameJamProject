@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 Global="*res://scripts/misc/Global.gd"
-PlayerData="*res://scripts/global/player_data.gd"
 
 [gui]
 

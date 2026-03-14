@@ -179,8 +179,8 @@ offset_bottom = 648.0
 
 [node name="Orbs" type="PanelContainer" parent="HUD"]
 layout_mode = 0
-offset_right = 466.0
-offset_bottom = 96.0
+offset_right = 33.0
+offset_bottom = 55.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_gdt2y")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD/Orbs"]

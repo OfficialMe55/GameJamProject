@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=4 uid="uid://dr0jd8wuvp3ch"]
+[gd_scene load_steps=20 format=4 uid="uid://dr0jd8wuvp3ch"]
 
 [ext_resource type="PackedScene" uid="uid://busxu8rldrpc5" path="res://scenes/player/Character.tscn" id="1_elqb8"]
+[ext_resource type="Script" uid="uid://dx4nusentevel" path="res://scripts/player/player_data.gd" id="1_q8u5g"]
 [ext_resource type="Script" uid="uid://b58be0ut5x8m" path="res://scripts/misc/camera_3d.gd" id="1_rarhs"]
 [ext_resource type="Script" uid="uid://b2054w8j3mouw" path="res://scripts/misc/hideSubViewportContainer.gd" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://hq2jc6etj8fl" path="res://assets/grass_tileset.png" id="2_rvslj"]
@@ -182,6 +183,10 @@ size = Vector3(100, 1, 100)
 
 [node name="World" type="Node3D"]
 
+[node name="playerData" type="Node" parent="." node_paths=PackedStringArray("ui")]
+script = ExtResource("1_q8u5g")
+ui = NodePath("../CanvasLayer/Ui")
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.70710677, -0.70710677, -3.090862e-08, 0, -4.371139e-08, 1, -0.70710677, 0.70710677, 3.090862e-08, 0, 0, 0)
 shadow_enabled = true
@@ -209,9 +214,10 @@ transform = Transform3D(1, 0, 0, 0, 0.69690233, 0.7171661, 0, -0.7171661, 0.6969
 script = ExtResource("1_rarhs")
 playerNode = NodePath("../Player")
 
-[node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("1_elqb8")]
+[node name="Player" parent="." node_paths=PackedStringArray("ui", "playerData") instance=ExtResource("1_elqb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 ui = NodePath("../CanvasLayer/Ui")
+playerData = NodePath("../playerData")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_vcsgt")
@@ -236,8 +242,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.520475, 0.1552229, -12.683
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Ui" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("7_jlsqs")]
+[node name="Ui" parent="CanvasLayer" node_paths=PackedStringArray("player", "playerData") instance=ExtResource("7_jlsqs")]
 player = NodePath("../../Player")
+playerData = NodePath("../../playerData")
 
 [node name="Human" parent="." instance=ExtResource("6_c01mt")]
 transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 4.6560597, 0.15470612, -9.810477)
