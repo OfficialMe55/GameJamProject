@@ -22,9 +22,11 @@ func _process(_delta: float) -> void:
 
 func dropEmotionOrb():
 	var instance = orbScene.instantiate()
+	print("post")
 	instance.emotion = currentEmotion
-	instance.global_position = body.global_position
 	add_child(instance)
+	instance.global_position = body.global_position
+	
 	
 	#Cycle through emotions, change it later
 	if currentEmotion == LOVE:

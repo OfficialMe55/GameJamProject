@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cuo84qqr1ri52" path="res://scripts/human/human_emotions.gd" id="2_c7jhf"]
 [ext_resource type="Script" uid="uid://daykyk4j4mcd7" path="res://scripts/human/free_roam.gd" id="2_cwf78"]
 [ext_resource type="Script" uid="uid://o8dq6ohuybnb" path="res://scripts/human/human_interraction_area.gd" id="3_mayv3"]
-[ext_resource type="Script" uid="uid://c6yfa13ngyha5" path="res://scripts/carried.gd" id="5_denma"]
+[ext_resource type="Script" uid="uid://c6yfa13ngyha5" path="res://scripts/human/carried.gd" id="5_denma"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_swaxu"]
 height = 6.0

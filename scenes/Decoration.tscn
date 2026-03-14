@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3gatf7hg5cpk"]
+
+[ext_resource type="Texture2D" uid="uid://d4e5kfjdcgg0u" path="res://assets/Decorations/Idol_PLACEHOLDER.png" id="1_toofy"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_cs1fd"]
+height = 4.0
+
+[node name="StaticBody3D" type="StaticBody3D"]
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("CylinderShape3D_cs1fd")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.0949383, 0)
+texture = ExtResource("1_toofy")

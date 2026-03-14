@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=4 uid="uid://dr0jd8wuvp3ch"]
 
 [ext_resource type="PackedScene" uid="uid://busxu8rldrpc5" path="res://scenes/player/Character.tscn" id="1_elqb8"]
-[ext_resource type="Script" uid="uid://dx4nusentevel" path="res://scripts/player/player_data.gd" id="1_q8u5g"]
-[ext_resource type="Script" uid="uid://b58be0ut5x8m" path="res://scripts/misc/camera_3d.gd" id="1_rarhs"]
-[ext_resource type="Script" uid="uid://b2054w8j3mouw" path="res://scripts/misc/hideSubViewportContainer.gd" id="2_0bbpv"]
+[ext_resource type="Script" uid="uid://dfy3hax5njw65" path="res://scripts/player/player_data.gd" id="1_q8u5g"]
+[ext_resource type="Script" uid="uid://pw6kstghk7eq" path="res://scripts/misc/camera_3d.gd" id="1_rarhs"]
+[ext_resource type="Script" uid="uid://n8lsp4cjcmb1" path="res://scripts/misc/hideSubViewportContainer.gd" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://hq2jc6etj8fl" path="res://assets/grass_tileset.png" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://c0hhwqjuc31ec" path="res://scenes/Pond.tscn" id="5_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://crsvqhcjq6pt" path="res://scenes/human/human.tscn" id="6_c01mt"]
