@@ -1,15 +1,16 @@
-[gd_scene load_steps=21 format=4 uid="uid://dr0jd8wuvp3ch"]
+[gd_scene load_steps=22 format=4 uid="uid://dr0jd8wuvp3ch"]
 
 [ext_resource type="PackedScene" uid="uid://busxu8rldrpc5" path="res://scenes/player/Character.tscn" id="1_elqb8"]
-[ext_resource type="Script" uid="uid://dx4nusentevel" path="res://scripts/player/player_data.gd" id="1_q8u5g"]
-[ext_resource type="Script" uid="uid://b58be0ut5x8m" path="res://scripts/misc/camera_3d.gd" id="1_rarhs"]
-[ext_resource type="Script" uid="uid://b2054w8j3mouw" path="res://scripts/misc/hideSubViewportContainer.gd" id="2_0bbpv"]
+[ext_resource type="Script" uid="uid://dfy3hax5njw65" path="res://scripts/player/player_data.gd" id="1_q8u5g"]
+[ext_resource type="Script" uid="uid://pw6kstghk7eq" path="res://scripts/misc/camera_3d.gd" id="1_rarhs"]
+[ext_resource type="Script" uid="uid://n8lsp4cjcmb1" path="res://scripts/misc/hideSubViewportContainer.gd" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://hq2jc6etj8fl" path="res://assets/grass_tileset.png" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://c0hhwqjuc31ec" path="res://scenes/Pond.tscn" id="5_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://crsvqhcjq6pt" path="res://scenes/human/human.tscn" id="6_c01mt"]
 [ext_resource type="PackedScene" uid="uid://dluf7b1uv0fsa" path="res://scenes/shop.tscn" id="6_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://co0r6gj64kibh" path="res://scenes/ui.tscn" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://b3gatf7hg5cpk" path="res://scenes/decorations/Decoration.tscn" id="10_lhr70"]
+[ext_resource type="Script" uid="uid://cwlphckc4wafu" path="res://scripts/Grid/grid_map_root.gd" id="11_wp0k4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8u5g"]
 texture = ExtResource("2_rvslj")
@@ -162,8 +163,8 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_vcsgt"]
-vertices = PackedVector3Array(-49.412457, 0.3499999, 0.00092315674, -3.1624565, 0.3499999, 0.00092315674, -2.9124565, 0.3499999, -1.7490768, -1.9124565, 0.3499999, -2.7490768, 0.08754349, 0.3499999, -3.2490768, 0.08754349, 0.3499999, -49.499077, -49.412457, 0.3499999, -49.499077, 2.8375435, 0.3499999, -1.7490768, 3.0875435, 0.3499999, 0.00092315674, 49.587543, 0.3499999, 0.00092315674, 1.8375435, 0.3499999, -2.7490768, 49.587543, 0.3499999, -49.499077, -1.4124565, 0.3499999, 1.2509232, -0.6624565, 0.3499999, 1.7509232, 0.5875435, 0.3499999, 1.7509232, 1.8375435, 0.3499999, 0.50092316, 1.5875435, 0.3499999, -0.99907684, 0.5875435, 0.3499999, -1.7490768, -1.1624565, 0.3499999, -1.4990768, -1.9124565, 0.3499999, -0.24907684, -3.1624565, 0.3499999, 1.0009232, 0.08754349, 0.3499999, 49.500923, 0.08754349, 0.3499999, 3.0009232, -1.9124565, 0.3499999, 2.7509232, -49.412457, 0.3499999, 49.500923, 3.0875435, 0.3499999, 1.2509232, 1.8375435, 0.3499999, 2.7509232, 49.587543, 0.3499999, 49.500923)
-polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(2, 0, 3), PackedInt32Array(3, 0, 6), PackedInt32Array(3, 6, 5), PackedInt32Array(7, 9, 8), PackedInt32Array(10, 4, 5), PackedInt32Array(10, 5, 7), PackedInt32Array(7, 5, 11), PackedInt32Array(7, 11, 9), PackedInt32Array(13, 12, 14), PackedInt32Array(17, 16, 15), PackedInt32Array(19, 18, 12), PackedInt32Array(12, 18, 17), PackedInt32Array(12, 17, 14), PackedInt32Array(14, 17, 15), PackedInt32Array(0, 1, 20), PackedInt32Array(23, 22, 21), PackedInt32Array(20, 23, 0), PackedInt32Array(0, 23, 24), PackedInt32Array(24, 23, 21), PackedInt32Array(25, 8, 9), PackedInt32Array(26, 21, 22), PackedInt32Array(25, 9, 26), PackedInt32Array(26, 9, 27), PackedInt32Array(26, 27, 21)]
+vertices = PackedVector3Array(-49.412457, 0.3499961, 0.00092315674, -2.9124565, 0.3499961, 0.00092315674, -2.9124565, 0.3499961, -1.4990768, -1.4124565, 0.3499961, -2.9990768, 0.08754349, 0.3499961, -2.9990768, 0.08754349, 0.3499961, -49.499077, -2.4124565, 0.3499961, -2.2490768, -49.412457, 0.3499961, -49.499077, 3.0875435, 0.3499961, -1.4990768, 3.0875435, 0.3499961, 0.00092315674, 49.587543, 0.3499961, 0.00092315674, 1.5875435, 0.3499961, -2.9990768, 2.3375435, 0.3499961, -2.4990768, 49.587543, 0.3499961, -49.499077, 1.8375435, 0.3499961, 0.75092316, 0.8375435, 0.3499961, -1.7490768, -1.6624565, 0.3499961, -0.74907684, -1.6624565, 0.3499961, 0.75092316, -0.6624565, 0.3499961, 1.7509232, 0.8375435, 0.3499961, 1.7509232, -0.6624565, 0.3499961, -1.7490768, 1.8375435, 0.3499961, -0.74907684, 0.08754349, 0.3499961, 49.500923, 0.08754349, 0.3499961, 3.0009232, -1.4124565, 0.3499961, 3.0009232, -2.9124565, 0.3499961, 1.5009232, -2.4124565, 0.3499961, 2.2509232, -49.412457, 0.3499961, 49.500923, 3.0875435, 0.3499961, 1.5009232, 1.5875435, 0.3499961, 3.0009232, 2.3375435, 0.3499961, 2.5009232, 49.587543, 0.3499961, 49.500923)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(5, 4, 3), PackedInt32Array(6, 2, 0), PackedInt32Array(3, 6, 5), PackedInt32Array(5, 6, 7), PackedInt32Array(7, 6, 0), PackedInt32Array(10, 9, 8), PackedInt32Array(11, 4, 5), PackedInt32Array(12, 11, 5), PackedInt32Array(8, 12, 10), PackedInt32Array(10, 12, 13), PackedInt32Array(13, 12, 5), PackedInt32Array(19, 18, 14), PackedInt32Array(14, 18, 17), PackedInt32Array(14, 17, 16), PackedInt32Array(14, 16, 15), PackedInt32Array(16, 20, 15), PackedInt32Array(15, 21, 14), PackedInt32Array(24, 23, 22), PackedInt32Array(0, 1, 25), PackedInt32Array(26, 0, 25), PackedInt32Array(24, 22, 26), PackedInt32Array(26, 22, 27), PackedInt32Array(26, 27, 0), PackedInt32Array(28, 9, 10), PackedInt32Array(22, 23, 29), PackedInt32Array(30, 22, 29), PackedInt32Array(28, 10, 30), PackedInt32Array(30, 10, 31), PackedInt32Array(30, 31, 22)]
 agent_height = 1.0
 agent_max_climb = 1.0
 agent_max_slope = 10.0
@@ -229,14 +230,33 @@ mesh = SubResource("PlaneMesh_vcsgt")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_c01mt")
 
-[node name="Pond" parent="NavigationRegion3D/plane" instance=ExtResource("5_vcsgt")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0.1, 0)
-
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/plane"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/plane/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_0bbpv")
+
+[node name="GridMapRoot" type="Marker3D" parent="NavigationRegion3D/plane" node_paths=PackedStringArray("navRegion")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0.1, -50)
+script = ExtResource("11_wp0k4")
+navRegion = NodePath("../..")
+gridSizeX = 100
+gridSizeY = 100
+
+[node name="StaticBody3D" parent="NavigationRegion3D/plane/GridMapRoot" instance=ExtResource("10_lhr70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.767757, -0.09999619, 45.613228)
+Emotion_Trigger = Dictionary[int, int]({
+0: 1,
+1: 0,
+2: 0,
+3: 0,
+4: 0,
+5: 0,
+6: 0
+})
+
+[node name="Pond" parent="NavigationRegion3D/plane/GridMapRoot" instance=ExtResource("5_vcsgt")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 50, 0.1, 50)
 
 [node name="Shop" parent="." instance=ExtResource("6_nxtc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.520475, 0.1552229, -12.683488)
@@ -249,15 +269,3 @@ playerData = NodePath("../../playerData")
 
 [node name="Human" parent="." instance=ExtResource("6_c01mt")]
 transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 4.6560597, 0.15470612, -9.810477)
-
-[node name="StaticBody3D" parent="." instance=ExtResource("10_lhr70")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8553, 0, -4.385849)
-Emotion_Trigger = Dictionary[int, int]({
-0: 1,
-1: 0,
-2: 0,
-3: 0,
-4: 0,
-5: 0,
-6: 0
-})

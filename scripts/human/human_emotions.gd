@@ -21,17 +21,16 @@ func _process(_delta: float) -> void:
 
 func dropEmotionOrb():
 	var instance = orbScene.instantiate()
-	print("post")
 	instance.emotion = currentEmotion
 	add_child(instance)
 	instance.global_position = body.global_position
 	
 	return
 	#Cycle through emotions, change it later
-	if currentEmotion == Global.EMOTIONS.LOVE:
-		currentEmotion = Global.EMOTIONS.FEAR
-	else:
-		currentEmotion += 1
+	#if currentEmotion == Global.EMOTIONS.LOVE:
+		#currentEmotion = Global.EMOTIONS.FEAR
+	#else:
+		#currentEmotion += 1
 	
 func _on_timer_timeout() -> void:
 	dropEmotionOrb()

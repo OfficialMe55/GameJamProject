@@ -9,6 +9,9 @@ const SPRITE_FOLDER_PATH = "res://assets/Decorations/"
 @export var influence_area: Area3D
 
 
+
+
+
 @export var Emotion_Trigger: Dictionary[Global.HUMAN, Global.EMOTIONS] = {
 	Global.HUMAN.JOE : Global.EMOTIONS.FEAR,
 	Global.HUMAN.INFLUENCER : Global.EMOTIONS.FEAR,
@@ -23,12 +26,6 @@ func loadSprite(spriteName: String):
 	spriteName.replace(SPRITE_FOLDER_PATH, "")
 	spriteName.replace(".png", "")
 	load(SPRITE_FOLDER_PATH + spriteName + ".png")
-
-
-
-
-	
-	#
 
 
 func _on_influence_area_area_entered(area: Area3D) -> void:

@@ -3,12 +3,12 @@ extends Area3D
 var playerNode: myPlayer
 
 @export var fishingSpot: Marker3D
-
+@export var parent: StaticBody3D
 
 @export var weight: int
 
-
-
+@onready var gridMapRoot: GridMapRoot = $"../.."
+	
 func _on_body_entered(body: myPlayer) -> void:
 	print("player entered")
 	playerNode = body

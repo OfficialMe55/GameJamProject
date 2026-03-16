@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgg0ml1pxvl6j"]
+
+[ext_resource type="Script" uid="uid://iytdaijeg2kt" path="res://scripts/Grid/cell.gd" id="1_upbjj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ngbm"]
+
+[node name="cell" type="Area3D" node_paths=PackedStringArray("shape", "midpoint")]
+script = ExtResource("1_upbjj")
+shape = NodePath("Shape")
+midpoint = NodePath("MiddlePoint")
+
+[node name="Shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+shape = SubResource("BoxShape3D_6ngbm")
+debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
+
+[node name="MiddlePoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+
+[node name="StartPoint" type="Marker3D" parent="."]
