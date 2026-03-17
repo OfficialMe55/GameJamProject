@@ -8,10 +8,6 @@ const SPRITE_FOLDER_PATH = "res://assets/Decorations/"
 
 @export var influence_area: Area3D
 
-
-
-
-
 @export var Emotion_Trigger: Dictionary[Global.HUMAN, Global.EMOTIONS] = {
 	Global.HUMAN.JOE : Global.EMOTIONS.FEAR,
 	Global.HUMAN.INFLUENCER : Global.EMOTIONS.FEAR,

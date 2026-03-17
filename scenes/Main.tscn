@@ -256,7 +256,20 @@ Emotion_Trigger = Dictionary[int, int]({
 })
 
 [node name="Pond" parent="NavigationRegion3D/plane/GridMapRoot" instance=ExtResource("5_vcsgt")]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 50, 0.1, 50)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 50, 0, 50)
+size = 0
+
+[node name="StaticBody3D2" parent="NavigationRegion3D/plane/GridMapRoot" instance=ExtResource("10_lhr70")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.05072, 0.036982797, 36.542786)
+Emotion_Trigger = Dictionary[int, int]({
+0: 0,
+1: 2,
+2: 0,
+3: 0,
+4: 0,
+5: 0,
+6: 0
+})
 
 [node name="Shop" parent="." instance=ExtResource("6_nxtc6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.520475, 0.1552229, -12.683488)
@@ -269,3 +282,4 @@ playerData = NodePath("../../playerData")
 
 [node name="Human" parent="." instance=ExtResource("6_c01mt")]
 transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 4.6560597, 0.15470612, -9.810477)
+myHumanType = 1

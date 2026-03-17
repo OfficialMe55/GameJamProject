@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://iytdaijeg2kt" path="res://scripts/Grid/cell.gd" id="1_upbjj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6ngbm"]
+size = Vector3(1, 0.3, 1)
 
 [node name="cell" type="Area3D" node_paths=PackedStringArray("shape", "midpoint")]
 script = ExtResource("1_upbjj")
@@ -10,7 +11,7 @@ shape = NodePath("Shape")
 midpoint = NodePath("MiddlePoint")
 
 [node name="Shape" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.15, 0.5)
 shape = SubResource("BoxShape3D_6ngbm")
 debug_color = Color(0, 0.6, 0.7019608, 0.41960785)
 

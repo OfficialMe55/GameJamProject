@@ -14,6 +14,8 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 @export var playerData: PlayerData
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
+@onready var decorations_scene = load("res://scenes/decorations/Decoration.tscn")
+
 
 #states
 @onready var default_movement: Node = $states/defaultMovement
@@ -31,7 +33,11 @@ var interactionTarget: Area3D
 
 var carriedHuman: myHuman
 
+var selectedBuilding: Decoration
+
 var navigationTarget: Vector3
+
+
 
 func _ready() -> void:
 	currentState = default_movement
@@ -61,7 +67,6 @@ func normalMovement():
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
-#in future select interaction target more intelligently using weights
 func interact():
 	if Input.is_action_just_pressed("interract"):
 		if not interactionBoxes.is_empty():
@@ -71,6 +76,16 @@ func interact():
 					interactionTarget = interactionBox
 					currentweight = interactionBox.weight
 			interactionTarget.interact()
+		return
+		
+	if Input.is_action_just_pressed("Inventory"):
+		#Replace with inventory stuff
+		print("inventory")
+		#selectedBuilding = decorations_scene.instantiate()
+		print(selectedBuilding)
+		
+		
+
 
 func navMovement():
 	if navigationTarget:
@@ -88,11 +103,14 @@ func navMovement():
 		print("no target, navigation aborted")
 		changeState(default_movement)
 
-#func dropHuman():
-	#if Input.is_action_just_pressed("interract"):
-		#carriedHuman.changeState(carriedHuman.freeRoam)
-		#changeState(default_movement)
-
 func dropHuman():
 	carriedHuman.changeState(carriedHuman.freeRoam)
 	changeState(default_movement)
+
+
+func build():
+	if Input.is_action_just_pressed("cancel_Place"):
+		changeState(default_movement)
+		return
+	# ADD INPUT ACTION FOR ENTERING INVENTORY
+	

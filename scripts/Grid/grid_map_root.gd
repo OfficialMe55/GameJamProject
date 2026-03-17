@@ -21,7 +21,7 @@ signal GridMap_Ready
 func _ready() -> void:
 	cell = preload("res://scenes/cell.tscn").instantiate()
 	cellShape = cell.get_node("Shape")
-	cellSize = Vector2(cellShape.shape.size.x,cellShape.shape.size.y)
+	cellSize = Vector2(cellShape.shape.size.x,cellShape.shape.size.z)
 	
 	for i in gridSizeX:
 		gridMapArray.append([])
@@ -45,7 +45,9 @@ func is_Space_Available(gridPosition: Vector2, size = 1) -> bool:
 				return false
 	return true
 
-func Assign_To_Gridmap(gridPosition: Vector2, body:StaticBody3D, size = 1) -> Vector3:
+func Assign_To_Gridmap(gridPosition: Vector2, body:StaticBody3D, size: int = 1) -> Vector3:
+	
+	#failsafe. Please always use is_Space_Available before Assign_To_Gridmap
 	if not is_Space_Available(gridPosition, size):
 		print("placement in gridmap aborted - space already occupied")
 		return Vector3.ZERO
@@ -54,5 +56,7 @@ func Assign_To_Gridmap(gridPosition: Vector2, body:StaticBody3D, size = 1) -> Ve
 	for i in range(gridPosition.x, gridPosition.x + size):
 		for j in range(gridPosition.y, gridPosition.y + size):
 			gridMapArray[i][j].assignContent(body)
+	
+	
 	
 	return gridMapArray[gridPosition.x][gridPosition.y].position

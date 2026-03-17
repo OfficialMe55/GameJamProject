@@ -1,9 +1,13 @@
 extends State
 
+
+
 func start():
 	pass
 
 func update(_delta):
-	player.navMovement()
+	player.getInput()
+	player.normalMovement()
+
 func End():
 	pass
