@@ -17,6 +17,7 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 @onready var decorations_scene = load("res://scenes/decorations/Decoration.tscn")
 
 
+
 #states
 @onready var default_movement: Node = $states/defaultMovement
 @onready var move_to_point: Node = $states/moveToPoint
@@ -36,8 +37,6 @@ var carriedHuman: myHuman
 var selectedBuilding: Decoration
 
 var navigationTarget: Vector3
-
-
 
 func _ready() -> void:
 	currentState = default_movement
@@ -81,8 +80,12 @@ func interact():
 	if Input.is_action_just_pressed("Inventory"):
 		#Replace with inventory stuff
 		print("inventory")
-		#selectedBuilding = decorations_scene.instantiate()
-		print(selectedBuilding)
+		
+		
+		selectedBuilding = decorations_scene.instantiate()
+		selectedBuilding.setDecoration("idol") #Replace "idol" with chosen decoration
+		#At this point building instance is ready
+		
 		
 		
 

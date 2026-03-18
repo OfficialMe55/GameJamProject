@@ -1,6 +1,6 @@
 extends Node
 
-class_name Decoration
+#class_name Decoration
 
 const SPRITE_FOLDER_PATH = "res://assets/Decorations/"
 
