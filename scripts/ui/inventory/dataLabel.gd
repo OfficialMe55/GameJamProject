@@ -1,5 +1,6 @@
 extends Node
 
+
 @export var myDeco: Global.DECOS
 
 
