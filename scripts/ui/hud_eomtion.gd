@@ -11,4 +11,4 @@ func _ready() -> void:
 func _on_ui_collected_emotion(emotion: Variant) -> void:
 	if emotion == myEmotion:
 		visible = true
-		countLabel.text = str(ui.playerData.emotionCountDict.get(myEmotion))
+		countLabel.text = str(PlayerData.emotionCountDict.get(myEmotion))
