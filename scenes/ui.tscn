@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://co0r6gj64kibh"]
+[gd_scene load_steps=21 format=3 uid="uid://co0r6gj64kibh"]
 
 [ext_resource type="Script" uid="uid://cvolqrwdeo72" path="res://scripts/ui/uiReference.gd" id="1_8dubc"]
 [ext_resource type="Script" uid="uid://cl38kgjaqku7f" path="res://scripts/ui/ui.gd" id="1_nt7q6"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://wb5iwpnur8i7" path="res://assets/Emotion Orbs/boredom.png" id="9_vsj0x"]
 [ext_resource type="Texture2D" uid="uid://dofdjt2xmqfht" path="res://assets/Emotion Orbs/happiness.png" id="10_qsv74"]
 [ext_resource type="Texture2D" uid="uid://d5vc5bdfpnds" path="res://assets/Emotion Orbs/love.png" id="11_h1mc3"]
+[ext_resource type="Script" uid="uid://dml6co01l4cx0" path="res://scripts/ui/inventory/dataLabel.gd" id="12_6rmj2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4jx1"]
 
@@ -230,6 +231,15 @@ myEmotion = 5
 
 [node name="Label2" type="Label" parent="HUD/Orbs/MarginContainer/HBoxContainer"]
 layout_mode = 2
+
+[node name="testabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 192.0
+offset_right = 336.0
+offset_bottom = 215.0
+text = "test"
+script = ExtResource("12_6rmj2")
 
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect" method="_on_ui_collected_emotion"]
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect2" method="_on_ui_collected_emotion"]

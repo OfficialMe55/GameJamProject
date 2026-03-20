@@ -4,7 +4,13 @@ const DEBUG: bool = true
 
 const FLOATPRECISION = 1000000
 
-enum EMOTIONS {FEAR, ANGER, SADNESS, BOREDOM, HAPPINESS, LOVE}
+enum EMOTIONS {
+	FEAR,
+	ANGER,
+	SADNESS,
+	BOREDOM,
+	HAPPINESS,
+	LOVE}
 
 enum HUMAN {
 	JOE,
@@ -15,6 +21,11 @@ enum HUMAN {
 	CULTIST,
 	INVESTIGATOR
 	}
+
+enum DECOS {
+	TESTDECO1,
+	TESTDECO2
+}
 
 func addFloat(variable, floatComponent) -> float:
 	variable = variable * FLOATPRECISION
