@@ -25,7 +25,7 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 @onready var navigationMovement: Node = $states/navigationMovement
 @onready var carryingHuman: Node = $states/CarryingHuman
 @onready var shop: Node = $states/shop
-
+@onready var building: Node =$states/building
 var currentState: State
 
 var isInInteractionBox: bool
@@ -37,6 +37,8 @@ var carriedHuman: myHuman
 var selectedBuilding: Decoration
 
 var navigationTarget: Vector3
+
+var mousePosition: Vector2
 
 func _ready() -> void:
 	currentState = default_movement
@@ -57,6 +59,9 @@ func changeState(nextState: State):
 func getInput():
 	input_dir = Input.get_vector("left", "right", "up", "down")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if Input.is_action_just_pressed("place"):
+		mousePosition = 
+	
 
 func normalMovement():
 	if direction:
@@ -85,6 +90,8 @@ func interact():
 		selectedBuilding = decorations_scene.instantiate()
 		selectedBuilding.setDecoration("idol") #Replace "idol" with chosen decoration
 		#At this point building instance is ready
+		
+		changeState(building)
 		
 		
 		
@@ -116,4 +123,5 @@ func build():
 		changeState(default_movement)
 		return
 	# ADD INPUT ACTION FOR ENTERING INVENTORY
+	
 	
