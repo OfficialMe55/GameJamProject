@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://wb5iwpnur8i7" path="res://assets/Emotion Orbs/boredom.png" id="9_vsj0x"]
 [ext_resource type="Texture2D" uid="uid://dofdjt2xmqfht" path="res://assets/Emotion Orbs/happiness.png" id="10_qsv74"]
 [ext_resource type="Texture2D" uid="uid://d5vc5bdfpnds" path="res://assets/Emotion Orbs/love.png" id="11_h1mc3"]
-[ext_resource type="PackedScene" uid="uid://b8dl1485eor1d" path="res://scenes/ui/item_container.tscn" id="12_6rmj2"]
+[ext_resource type="PackedScene" uid="uid://b71ug03gohb7s" path="res://scenes/ui/deco_inv.tscn" id="12_6rmj2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4jx1"]
 
@@ -257,10 +257,8 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 10
 columns = 50
 
-[node name="itemContainer" parent="inventory/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("12_6rmj2")]
+[node name="PanelContainer" parent="inventory/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("12_6rmj2")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
 
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect" method="_on_ui_collected_emotion"]
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect2" method="_on_ui_collected_emotion"]
