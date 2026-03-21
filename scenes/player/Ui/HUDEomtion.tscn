@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bntnotsir0w3i"]
+[gd_scene load_steps=4 format=3 uid="uid://bntnotsir0w3i"]
 
 [ext_resource type="Texture2D" uid="uid://cjud1hp40hla3" path="res://assets/Emotion Orbs/fear.png" id="1_1ent7"]
 [ext_resource type="Script" uid="uid://tlvqqey4nu5t" path="res://scripts/ui/hud_eomtion.gd" id="2_866hl"]
+[ext_resource type="Script" uid="uid://ck7huwwfie7uc" path="res://scripts/ui/inventory/EmotionLabel.gd" id="3_4y0ne"]
 
 [node name="TextureRect" type="TextureRect" node_paths=PackedStringArray("countLabel")]
 custom_minimum_size = Vector2(64, 64)
@@ -17,9 +18,11 @@ offset_top = 48.0
 offset_right = 72.0
 offset_bottom = 72.0
 
-[node name="countLabel" type="Label" parent="Control"]
+[node name="countLabel" type="Label" parent="Control" node_paths=PackedStringArray("visibilityTarget")]
 layout_mode = 0
 offset_right = 35.0
 offset_bottom = 41.875
 theme_override_font_sizes/font_size = 30
 text = "0"
+script = ExtResource("3_4y0ne")
+visibilityTarget = NodePath("../..")

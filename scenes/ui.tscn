@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://wb5iwpnur8i7" path="res://assets/Emotion Orbs/boredom.png" id="9_vsj0x"]
 [ext_resource type="Texture2D" uid="uid://dofdjt2xmqfht" path="res://assets/Emotion Orbs/happiness.png" id="10_qsv74"]
 [ext_resource type="Texture2D" uid="uid://d5vc5bdfpnds" path="res://assets/Emotion Orbs/love.png" id="11_h1mc3"]
-[ext_resource type="Script" uid="uid://dml6co01l4cx0" path="res://scripts/ui/inventory/dataLabel.gd" id="12_6rmj2"]
+[ext_resource type="PackedScene" uid="uid://b8dl1485eor1d" path="res://scenes/ui/item_container.tscn" id="12_6rmj2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4jx1"]
 
@@ -232,14 +232,35 @@ myEmotion = 5
 [node name="Label2" type="Label" parent="HUD/Orbs/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="testabel" type="Label" parent="."]
+[node name="inventory" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="PanelContainer" type="PanelContainer" parent="inventory"]
 layout_mode = 0
-offset_left = 296.0
-offset_top = 192.0
-offset_right = 336.0
-offset_bottom = 215.0
-text = "test"
-script = ExtResource("12_6rmj2")
+offset_left = 128.0
+offset_top = 64.0
+offset_right = 1024.0
+offset_bottom = 576.0
+
+[node name="MarginContainer" type="MarginContainer" parent="inventory/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="GridContainer" type="GridContainer" parent="inventory/PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 10
+columns = 50
+
+[node name="itemContainer" parent="inventory/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("12_6rmj2")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect" method="_on_ui_collected_emotion"]
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect2" method="_on_ui_collected_emotion"]

@@ -8,5 +8,7 @@ class_name UiParent
 
 signal collectedEmotion(emotion)
 
+signal containerOpened(state: bool)
+
 func _ready() -> void:
 	PlayerData.ui = self
