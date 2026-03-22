@@ -1,0 +1,15 @@
+{
+	"idol": {
+		"emotions":{
+			"joe": "fear",
+			"influencer": "fear",
+			"fisherman": "fear",
+			"businessman": "fear",
+			"hiker": "fear",
+			"cultist": "happiness",
+			"investigator": "anger",
+			"convict": "fear"
+			},
+		"boost": {}
+	}
+}
