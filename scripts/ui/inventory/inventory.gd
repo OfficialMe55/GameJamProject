@@ -19,7 +19,6 @@ func _ready() -> void:
 			
 			var path = "res://resourcers/decos/" + file_name
 			var res:Resource = load(path)
-			print(res.resource_path)
 			if res:
 				targetGrid.add_child(itemContainer.construct(res, i, ui))
 				

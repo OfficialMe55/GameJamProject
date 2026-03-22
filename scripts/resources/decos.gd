@@ -3,6 +3,7 @@ class_name deco
 
 @export var size: int
 @export var myTexture: Texture2D
+@export var myIcon: Texture2D
 @export var myName: String
 
 @export var Emotion_Trigger: Dictionary[Global.HUMAN, Global.EMOTIONS] = {

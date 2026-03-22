@@ -63,7 +63,9 @@ static func construct(resource: deco) -> Decoration:
 	var selectedBuilding: Decoration = DECORATION.instantiate()
 	selectedBuilding.myResource = resource
 	
+	return selectedBuilding
+	selectedBuilding.sprite.texture = resource.myTexture
 	selectedBuilding.collisionShape.scale.x = resource.size
 	selectedBuilding.collisionShape.scale.z = resource.size
-	selectedBuilding.sprite.texture = resource.myTexture
+	
 	return selectedBuilding

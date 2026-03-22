@@ -96,7 +96,6 @@ func inventory_function(resource: deco):
 	selectedBuilding.setDecoration("idol")
 	selectedBuilding.loadSprite("Idol_PLACEHOLDER")
 	gridMap.add_child(selectedBuilding)
-	
 	selectedBuilding = Decoration.construct(resource)
 	gridMap.add_child(selectedBuilding)
 
@@ -140,7 +139,7 @@ func build():
 		return
 	
 	#This stuff can be moved to the moment an object is selected from inventory
-	print(selectedBuilding)
+	#print(selectedBuilding)
 	selectedBuilding.deactivate()
 	selectedBuilding.sprite.transparency = 0.2
 

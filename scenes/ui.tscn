@@ -262,7 +262,9 @@ theme_override_constants/v_separation = 10
 columns = 50
 
 [node name="PanelContainer" parent="inventory/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("12_6rmj2")]
+custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
+text = "dont click"
 
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect" method="_on_ui_collected_emotion"]
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect2" method="_on_ui_collected_emotion"]

@@ -8,6 +8,7 @@ const DECORATION = preload("uid://b6aj21ev176s3")
 
 
 @export var nameLabel: Label
+@export var textureNode: TextureRect
 
 var myResource: Resource
 var myTexture: Texture2D
@@ -20,15 +21,13 @@ var ui: UiParent
 static func construct(resource: deco, myPosInCountArray, ui: UiParent) -> itemContainer:
 	var newItemContainer: itemContainer = ITEM_CONTAINER.instantiate()
 	newItemContainer.myResource = resource
+	
 	newItemContainer.myCount = SAVE_DATA.decoCountArray[myPosInCountArray]
-	newItemContainer.myTexture = resource.myTexture
+	newItemContainer.textureNode.texture = resource.myIcon
 	
 	newItemContainer.nameLabel.text = resource.myName
-	
-	newItemContainer.ui = ui
 	
 	return newItemContainer
 
 func _on_pressed() -> void:
-	print(ui)
-	#ui.player.deco_selected(myResource)
+	PlayerData.ui.player.deco_selected(myResource)

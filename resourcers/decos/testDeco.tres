@@ -1,9 +1,14 @@
-[gd_resource type="Resource" script_class="deco" load_steps=2 format=3 uid="uid://bdscvupyh545o"]
+[gd_resource type="Resource" script_class="deco" load_steps=4 format=3 uid="uid://bdscvupyh545o"]
 
 [ext_resource type="Script" uid="uid://c67t0sd70mt5a" path="res://scripts/resources/decos.gd" id="1_hyhlr"]
+[ext_resource type="Texture2D" uid="uid://cw8sayn1ysioe" path="res://assets/ground.png" id="1_mexs4"]
+[ext_resource type="Texture2D" uid="uid://bj1d7omssh36l" path="res://assets/Decorations/Idol_PLACEHOLDER.png" id="2_210ux"]
 
 [resource]
 resource_name = "testDeco"
 script = ExtResource("1_hyhlr")
+size = 2
+myTexture = ExtResource("2_210ux")
+myIcon = ExtResource("1_mexs4")
 myName = "d2"
 metadata/_custom_type_script = "uid://c67t0sd70mt5a"
