@@ -3,5 +3,6 @@
 [ext_resource type="Script" uid="uid://c67t0sd70mt5a" path="res://scripts/resources/decos.gd" id="1_hyhlr"]
 
 [resource]
+resource_name = "testDeco"
 script = ExtResource("1_hyhlr")
 metadata/_custom_type_script = "uid://c67t0sd70mt5a"

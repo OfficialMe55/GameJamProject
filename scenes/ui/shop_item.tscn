@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://b71ug03gohb7s"]
+[gd_scene load_steps=4 format=3 uid="uid://b8dl1485eor1d"]
 
-[ext_resource type="Script" uid="uid://c0spkqt74b7bv" path="res://scripts/ui/inventory/deco_inv.gd" id="1_cyloj"]
+[ext_resource type="Script" uid="uid://bg3qrv366amul" path="res://scripts/ui/itemContainer.gd" id="1_strbt"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmxdx"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ktti3"]
+bg_color = Color(0.23707056, 0.64794654, 0.833904, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.5167719, 0.8881087, 0.7440883, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyloj"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x4jx1"]
 bg_color = Color(0.461258, 0.59147185, 0.88996696, 1)
 border_width_left = 10
 border_width_top = 10
@@ -17,9 +27,12 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="PanelContainer" type="PanelContainer"]
-theme_override_styles/panel = SubResource("StyleBoxFlat_gmxdx")
-script = ExtResource("1_cyloj")
+[node name="itemContainer" type="PanelContainer" node_paths=PackedStringArray("nameLabel", "prizeLabel", "stockLabel")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_ktti3")
+script = ExtResource("1_strbt")
+nameLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/nameLabel")
+prizeLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/prizeLabel")
+stockLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/stockLabel")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -36,7 +49,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cyloj")
+theme_override_styles/panel = SubResource("StyleBoxFlat_x4jx1")
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -49,6 +62,13 @@ layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="nameLabel" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_font_sizes/font_size = 10
+text = "name"
+
+[node name="prizeLabel" type="Label" parent="HBoxContainer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6

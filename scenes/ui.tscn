@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://wb5iwpnur8i7" path="res://assets/Emotion Orbs/boredom.png" id="9_vsj0x"]
 [ext_resource type="Texture2D" uid="uid://dofdjt2xmqfht" path="res://assets/Emotion Orbs/happiness.png" id="10_qsv74"]
 [ext_resource type="Texture2D" uid="uid://d5vc5bdfpnds" path="res://assets/Emotion Orbs/love.png" id="11_h1mc3"]
-[ext_resource type="PackedScene" uid="uid://b71ug03gohb7s" path="res://scenes/ui/deco_inv.tscn" id="12_6rmj2"]
+[ext_resource type="PackedScene" uid="uid://b71ug03gohb7s" path="res://scenes/ui/item_container.tscn" id="12_6rmj2"]
 [ext_resource type="Script" uid="uid://cax3bmnebolq8" path="res://scripts/ui/inventory/inventory.gd" id="12_vsj0x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4jx1"]
