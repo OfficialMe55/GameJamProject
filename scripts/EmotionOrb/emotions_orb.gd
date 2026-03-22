@@ -51,5 +51,5 @@ func _on_area_3d_body_entered(body: Node) -> void:
 
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.name == "emotionCollector":
-		PlayerData.changeEmotionCount(emotion, 1)
+		PlayerData.changeDictCount(PlayerData.emotionCountDict, emotion, 1)
 		self.queue_free()

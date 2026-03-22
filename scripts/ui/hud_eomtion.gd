@@ -6,7 +6,8 @@ extends TextureRect
 
 func _ready() -> void:
 	visible = false
-
+	countLabel.myEmotion = myEmotion
+	countLabel.assignToDict()
 
 func _on_ui_collected_emotion(emotion: Variant) -> void:
 	if emotion == myEmotion:

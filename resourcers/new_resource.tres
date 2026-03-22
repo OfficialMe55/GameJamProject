@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="deco" load_steps=3 format=3 uid="uid://ciaerb3u8oudj"]
+
+[ext_resource type="Script" uid="uid://c67t0sd70mt5a" path="res://scripts/resources/decos.gd" id="1_jjgv1"]
+[ext_resource type="Texture2D" uid="uid://cw8sayn1ysioe" path="res://assets/ground.png" id="2_tayn5"]
+
+[resource]
+script = ExtResource("1_jjgv1")
+inter_area_size = 10
+sprite = ExtResource("2_tayn5")
+metadata/_custom_type_script = "uid://c67t0sd70mt5a"

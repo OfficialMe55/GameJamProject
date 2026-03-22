@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="deco" load_steps=2 format=3 uid="uid://dinckrnrf0ls1"]
+
+[ext_resource type="Script" uid="uid://c67t0sd70mt5a" path="res://scripts/resources/decos.gd" id="1_aoiev"]
+
+[resource]
+script = ExtResource("1_aoiev")
+inter_area_size = 7
+metadata/_custom_type_script = "uid://c67t0sd70mt5a"
