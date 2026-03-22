@@ -58,8 +58,9 @@ func changeState(nextState: State):
 func getInput():
 	input_dir = Input.get_vector("left", "right", "up", "down")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if Input.is_action_just_pressed("place"):
-		mousePosition = 
+	if Input.is_action_just_pressed("Place"):
+#		mousePosition = 
+		pass
 	
 
 func normalMovement():

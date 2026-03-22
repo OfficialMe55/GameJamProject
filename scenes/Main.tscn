@@ -1,15 +1,15 @@
 [gd_scene load_steps=21 format=4 uid="uid://dr0jd8wuvp3ch"]
 
 [ext_resource type="PackedScene" uid="uid://busxu8rldrpc5" path="res://scenes/player/Character.tscn" id="1_elqb8"]
-[ext_resource type="Script" uid="uid://b58be0ut5x8m" path="res://scripts/misc/camera_3d.gd" id="1_rarhs"]
-[ext_resource type="Script" uid="uid://b2054w8j3mouw" path="res://scripts/misc/hideSubViewportContainer.gd" id="2_0bbpv"]
+[ext_resource type="Script" uid="uid://pw6kstghk7eq" path="res://scripts/misc/camera_3d.gd" id="1_rarhs"]
+[ext_resource type="Script" uid="uid://n8lsp4cjcmb1" path="res://scripts/misc/hideSubViewportContainer.gd" id="2_0bbpv"]
 [ext_resource type="Texture2D" uid="uid://hq2jc6etj8fl" path="res://assets/grass_tileset.png" id="2_rvslj"]
 [ext_resource type="PackedScene" uid="uid://c0hhwqjuc31ec" path="res://scenes/Pond.tscn" id="5_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://crsvqhcjq6pt" path="res://scenes/human/human.tscn" id="6_c01mt"]
 [ext_resource type="PackedScene" uid="uid://dluf7b1uv0fsa" path="res://scenes/shop.tscn" id="6_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://co0r6gj64kibh" path="res://scenes/ui.tscn" id="7_jlsqs"]
-[ext_resource type="PackedScene" uid="uid://b3gatf7hg5cpk" path="res://scenes/decorations/Decoration.tscn" id="10_lhr70"]
-[ext_resource type="Script" uid="uid://ba56dficxjqty" path="res://scripts/Grid/grid_map_root.gd" id="11_wp0k4"]
+[ext_resource type="PackedScene" path="res://scenes/decorations/Decoration.tscn" id="10_lhr70"]
+[ext_resource type="Script" path="res://scripts/Grid/grid_map_root.gd" id="11_wp0k4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8u5g"]
 texture = ExtResource("2_rvslj")
@@ -270,9 +270,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.520475, 0.1552229, -12.683
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Ui" parent="CanvasLayer" node_paths=PackedStringArray("player", "playerData") instance=ExtResource("7_jlsqs")]
+[node name="Ui" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("7_jlsqs")]
 player = NodePath("../../Player")
-playerData = NodePath("")
 
 [node name="Human" parent="." instance=ExtResource("6_c01mt")]
 transform = Transform3D(0.3, 0, 0, 0, 0.29999998, 0, 0, 0, 0.29999998, 4.6560597, 0.15470612, -9.810477)

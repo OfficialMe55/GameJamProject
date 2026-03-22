@@ -25,17 +25,7 @@ const SPRITE_FOLDER_PATH = "res://assets/Decorations/"
 var decorationsData
 
 func setDecoration(decorationName: String):
-	
-	var json = JSON.new()
-	var error = json.parse(Global.getDecorationsJSON())
-	
-	if not error == OK:
-		print("JSON Parse Error: ", json.get_error_message(), " in decorationsJSON at line ", json.get_error_line())
-		return
-
-	decorationsData = json.data[decorationName]
-	loadSprite(decorationName)
-	updateEmotions(decorationName)
+	pass
 
 func loadSprite(spriteName: String):
 	spriteName.replace(SPRITE_FOLDER_PATH, "")
