@@ -7,3 +7,6 @@ class_name UiParent
 @export var playerData: PlayerData
 
 signal collectedEmotion(emotion)
+
+func _ready() -> void:
+	PlayerData.ui = self

@@ -1,7 +1,12 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3gatf7hg5cpk"]
 
+<<<<<<< HEAD
 [ext_resource type="Script" uid="uid://be47hxqmqgpyj" path="res://scripts/Decorations/decoration.gd" id="1_0wheb"]
 [ext_resource type="Texture2D" uid="uid://d4e5kfjdcgg0u" path="res://assets/Decorations/Idol.png" id="1_toofy"]
+=======
+[ext_resource type="Script" uid="uid://co2jmja3r1ps7" path="res://scripts/Decorations/decoration.gd" id="1_0wheb"]
+[ext_resource type="Texture2D" uid="uid://bj1d7omssh36l" path="res://assets/Decorations/Idol_PLACEHOLDER.png" id="1_toofy"]
+>>>>>>> 15205b5fc488cd11c05b6cba8c1f14b41f680625
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cs1fd"]
 height = 4.0

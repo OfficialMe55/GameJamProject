@@ -11,7 +11,6 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 
 # essential connections
 @export var ui: UiParent
-@export var playerData: PlayerData
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var decorations_scene = load("res://scenes/decorations/Decoration.tscn")
