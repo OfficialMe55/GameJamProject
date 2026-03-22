@@ -41,7 +41,7 @@ func _ready() -> void:
 func is_Space_Available(gridPosition: Vector2, size = 1) -> bool:
 	for i in range(gridPosition.x, gridPosition.x + size):
 		for j in range(gridPosition.y, gridPosition.y + size):
-			if not gridMapArray[i][j].is_empty:
+			if not gridMapArray[i][j].is_empty():
 				return false
 	return true
 
@@ -49,7 +49,7 @@ func Assign_To_Gridmap(gridPosition: Vector2, body:StaticBody3D, size: int = 1) 
 	
 	#failsafe. Please always use is_Space_Available before Assign_To_Gridmap
 	if not is_Space_Available(gridPosition, size):
-		print("placement in gridmap aborted - space already occupied")
+		printerr("placement in gridmap aborted - space already occupied")
 		return Vector3.ZERO
 	
 	
@@ -57,6 +57,19 @@ func Assign_To_Gridmap(gridPosition: Vector2, body:StaticBody3D, size: int = 1) 
 		for j in range(gridPosition.y, gridPosition.y + size):
 			gridMapArray[i][j].assignContent(body)
 	
+	return Get_Position_From_Cell(gridPosition, body, size)
 	
-	
-	return gridMapArray[gridPosition.x][gridPosition.y].position
+
+
+func Get_Position_From_Cell(gridPosition: Vector2, body:StaticBody3D, size: int = 1) -> Vector3:
+	var objectPosition: Vector3
+	match size:
+		1:
+			objectPosition = gridMapArray[gridPosition.x][gridPosition.y].position
+			objectPosition += gridMapArray[gridPosition.x][gridPosition.y].midpoint.position #adding offset
+		2:
+			objectPosition = gridMapArray[gridPosition.x+1][gridPosition.y+1].position
+		3:
+			objectPosition = gridMapArray[gridPosition.x+1][gridPosition.y+1].position
+			objectPosition += gridMapArray[gridPosition.x+1][gridPosition.y+1].midpoint.position #adding offset
+	return objectPosition

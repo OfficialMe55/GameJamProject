@@ -8,8 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://crsvqhcjq6pt" path="res://scenes/human/human.tscn" id="6_c01mt"]
 [ext_resource type="PackedScene" uid="uid://dluf7b1uv0fsa" path="res://scenes/shop.tscn" id="6_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://co0r6gj64kibh" path="res://scenes/ui.tscn" id="7_jlsqs"]
-[ext_resource type="PackedScene" path="res://scenes/decorations/Decoration.tscn" id="10_lhr70"]
-[ext_resource type="Script" path="res://scripts/Grid/grid_map_root.gd" id="11_wp0k4"]
+[ext_resource type="PackedScene" uid="uid://b6aj21ev176s3" path="res://scenes/decorations/Decoration.tscn" id="10_lhr70"]
+[ext_resource type="Script" uid="uid://bou2xvv4pdtom" path="res://scripts/Grid/grid_map_root.gd" id="11_wp0k4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q8u5g"]
 texture = ExtResource("2_rvslj")
@@ -206,10 +206,17 @@ tile_set = SubResource("TileSet_lhr70")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_rarhs")
 
-[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("playerNode")]
+[node name="Camera3D" type="Camera3D" parent="." node_paths=PackedStringArray("playerNode", "gridmap", "rayCast")]
 transform = Transform3D(1, 0, 0, 0, 0.69690233, 0.7171661, 0, -0.7171661, 0.69690233, 0, 7.5, -3)
 script = ExtResource("1_rarhs")
 playerNode = NodePath("../Player")
+gridmap = NodePath("../NavigationRegion3D/plane/GridMapRoot")
+rayCast = NodePath("RayCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+collision_mask = 16
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("1_elqb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
@@ -251,7 +258,6 @@ Emotion_Trigger = Dictionary[int, int]({
 
 [node name="Pond" parent="NavigationRegion3D/plane/GridMapRoot" instance=ExtResource("5_vcsgt")]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 50, 0, 50)
-size = 0
 
 [node name="StaticBody3D2" parent="NavigationRegion3D/plane/GridMapRoot" instance=ExtResource("10_lhr70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.05072, 0.036982797, 36.542786)

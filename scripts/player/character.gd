@@ -3,9 +3,12 @@ extends CharacterBody3D
 class_name myPlayer
 
 const SPEED: float = 15.0
+const GHOST_BUILDING_OFFSET = Vector3(0, 0.01, 0)
 
 var input_dir := Input.get_vector("left", "right", "up", "down")
 var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+
+var gridMap: GridMapRoot
 
 @export var humanHook: Marker3D
 
@@ -16,7 +19,6 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 @onready var decorations_scene = load("res://scenes/decorations/Decoration.tscn")
 
 
-
 #states
 @onready var default_movement: Node = $states/defaultMovement
 @onready var move_to_point: Node = $states/moveToPoint
@@ -24,7 +26,8 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 @onready var navigationMovement: Node = $states/navigationMovement
 @onready var carryingHuman: Node = $states/CarryingHuman
 @onready var shop: Node = $states/shop
-@onready var building: Node =$states/building
+@onready var building: Node = $states/building
+@onready var navRegion: NavigationRegion3D = $"../NavigationRegion3D"
 var currentState: State
 
 var isInInteractionBox: bool
@@ -36,12 +39,13 @@ var carriedHuman: myHuman
 var selectedBuilding: Decoration
 
 var navigationTarget: Vector3
-
-var mousePosition: Vector2
+var camera: Camera3D
 
 func _ready() -> void:
 	currentState = default_movement
 	currentState.start()
+	gridMap = $"../NavigationRegion3D/plane/GridMapRoot"
+	camera = $"../Camera3D"
 	
 	
 func _physics_process(_delta: float):
@@ -84,17 +88,15 @@ func interact():
 		
 	if Input.is_action_just_pressed("Inventory"):
 		#Replace with inventory stuff
-		print("inventory")
 		
-		
+		# TEMP CODE AHEAD
 		selectedBuilding = decorations_scene.instantiate()
-		selectedBuilding.setDecoration("idol") #Replace "idol" with chosen decoration
-		#At this point building instance is ready
-		
+		selectedBuilding.setDecoration("idol")
+		selectedBuilding.loadSprite("Idol_PLACEHOLDER")
+		gridMap.add_child(selectedBuilding)
+		# TEMP CODE ABOVE
 		changeState(building)
-		
-		
-		
+
 
 
 func navMovement():
@@ -119,9 +121,49 @@ func dropHuman():
 
 
 func build():
+	if not selectedBuilding: #failsafe condition, might delete later
+		changeState(default_movement)
+		printerr("Entered build state without building assigned")
+		return
 	if Input.is_action_just_pressed("cancel_Place"):
+		selectedBuilding.queue_free()
+		selectedBuilding = null
 		changeState(default_movement)
 		return
-	# ADD INPUT ACTION FOR ENTERING INVENTORY
+		
+	if not camera.Get_Cell_From_Mouse_Position():
+		return
 	
+	#This stuff can be moved to the moment an object is selected from inventory
+	print(selectedBuilding)
+	selectedBuilding.deactivate()
+	selectedBuilding.sprite.transparency = 0.2
+
+	var DecorationSize = 1 #temporary ugly variable. To be replaced by size collected from resource
+	var hovered_cell: cell = camera.Get_Cell_From_Mouse_Position()
+	var building_ghost_position: Vector3 = gridMap.Get_Position_From_Cell(hovered_cell.gridPosition, selectedBuilding, DecorationSize)
+	selectedBuilding.position = building_ghost_position + GHOST_BUILDING_OFFSET
+	
+	var spaceAvailable: bool = gridMap.is_Space_Available(hovered_cell.gridPosition, DecorationSize)
+	
+	if not spaceAvailable:
+		selectedBuilding.sprite.modulate = Color(1,0,0)
+		selectedBuilding.sprite.transparency = 0.1
+	else:
+		selectedBuilding.sprite.modulate = Color(1, 1, 1) #remove modulation
+		selectedBuilding.sprite.transparency = 0.2
+	
+	if Input.is_action_just_pressed("Place") and spaceAvailable:
+		
+		selectedBuilding.position = gridMap.Assign_To_Gridmap(hovered_cell.gridPosition, selectedBuilding, DecorationSize)
+		selectedBuilding.sprite.transparency = 0
+		selectedBuilding.activate()
+		selectedBuilding = null
+		navRegion.bake_navigation_mesh()
+		changeState(default_movement)
+		
+	
+	
+	
+	#if gridMap.is_Space_Available()
 	

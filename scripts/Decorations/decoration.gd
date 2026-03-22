@@ -7,6 +7,8 @@ const DECORATIONS_JSON_PATH = "res://scripts/Decorations/decorations_list.json"
 const SPRITE_FOLDER_PATH = "res://assets/Decorations/"
 
 @export var decoName: String
+@export var sprite: Sprite3D
+@export var collisionShape: CollisionShape3D
 
 @export var influence_area: Area3D
 
@@ -21,6 +23,7 @@ const SPRITE_FOLDER_PATH = "res://assets/Decorations/"
 	Global.HUMAN.CONVICT: Global.EMOTIONS.FEAR
 	}
 
+var active: bool = true
 
 var decorationsData
 
@@ -30,7 +33,8 @@ func setDecoration(decorationName: String):
 func loadSprite(spriteName: String):
 	spriteName.replace(SPRITE_FOLDER_PATH, "")
 	spriteName.replace(".png", "")
-	load(SPRITE_FOLDER_PATH + spriteName + ".png")
+	sprite.texture = load(SPRITE_FOLDER_PATH + spriteName + ".png")
+	
 
 func updateEmotions(decorationName):
 	var i = 0
@@ -40,6 +44,17 @@ func updateEmotions(decorationName):
 		i+=1
 
 func _on_influence_area_area_entered(area: Area3D) -> void:
+	if not active:
+		return
 	if area.get_parent() is myHuman:
 		var human = area.get_parent()
 		human.emotions.currentEmotion = Emotion_Trigger.get(human.myHumanType)
+
+func deactivate():
+	active = false
+	collisionShape.disabled = true
+
+func activate():
+	active = true
+	collisionShape.disabled = false
+	

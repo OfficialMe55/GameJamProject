@@ -14,8 +14,6 @@ func is_empty() -> bool:
 	return true
 
 func assignContent(body: StaticBody3D):
-	print(gridPosition)
-	print(body)
 	content = body
 	updateDebugColor()
 	

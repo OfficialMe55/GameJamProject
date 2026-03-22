@@ -1,8 +1,9 @@
 extends StaticBody3D
 
+const size = 2
+
 @onready var gridMapRoot: GridMapRoot = $".."
 @export var gridMapPosition: Vector2
-@export var size: int
 
 func _ready():
 	gridMapRoot.GridMap_Ready.connect(_on_GridMap_ready)

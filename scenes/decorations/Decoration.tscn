@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3gatf7hg5cpk"]
+[gd_scene load_steps=5 format=3 uid="uid://b6aj21ev176s3"]
 
-[ext_resource type="Script" uid="uid://co2jmja3r1ps7" path="res://scripts/Decorations/decoration.gd" id="1_0wheb"]
+[ext_resource type="Script" uid="uid://cal3ap5odt41j" path="res://scripts/Decorations/decoration.gd" id="1_0wheb"]
 [ext_resource type="Texture2D" uid="uid://bj1d7omssh36l" path="res://assets/Decorations/Idol_PLACEHOLDER.png" id="1_toofy"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_cs1fd"]
@@ -9,10 +9,12 @@ height = 4.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_0wheb"]
 size = Vector3(5, 1, 5)
 
-[node name="StaticBody3D" type="StaticBody3D" node_paths=PackedStringArray("influence_area")]
+[node name="StaticBody3D" type="StaticBody3D" node_paths=PackedStringArray("sprite", "collisionShape", "influence_area")]
 collision_mask = 5
 script = ExtResource("1_0wheb")
 decoName = "testDeco"
+sprite = NodePath("Sprite3D")
+collisionShape = NodePath("CollisionShape3D")
 influence_area = NodePath("InfluenceArea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -20,7 +22,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CylinderShape3D_cs1fd")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.4330127, 0.25, 0, -0.25, 0.4330127, 0, 1.0949383, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.4330127, 0.25, 0, -0.25, 0.4330127, 0, 1.0949383, -0.4649968)
 texture = ExtResource("1_toofy")
 
 [node name="InfluenceArea" type="Area3D" parent="."]

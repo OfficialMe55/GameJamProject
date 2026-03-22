@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0hhwqjuc31ec"]
 
-[ext_resource type="Script" uid="uid://b0i5qppvooyfj" path="res://scripts/pond/pondGrid.gd" id="1_01vln"]
+[ext_resource type="Script" uid="uid://rdcsdugu2ped" path="res://scripts/pond/pondGrid.gd" id="1_01vln"]
 [ext_resource type="Texture2D" uid="uid://dxtuv3r3qiqws" path="res://assets/pondPH.png" id="1_p1dus"]
 [ext_resource type="Script" uid="uid://b5buvjn7hjtqn" path="res://scripts/pond/Pond.gd" id="2_0hmqt"]
 
@@ -14,7 +14,6 @@ transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 collision_mask = 5
 script = ExtResource("1_01vln")
 gridMapPosition = Vector2(49, 49)
-size = 2
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-0.12, -1.0490733e-08, 4.585645e-16, 0, -5.2453664e-09, -0.12, 1.0490733e-08, -0.12, 5.2453664e-09, 0, 0, 0)
