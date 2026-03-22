@@ -11,6 +11,7 @@ var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normal
 
 # essential connections
 @export var ui: UiParent
+@export var gridMap: Marker3D
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var decorations_scene = load("res://scenes/decorations/Decoration.tscn")
@@ -88,8 +89,11 @@ func interact():
 		
 		
 		selectedBuilding = decorations_scene.instantiate()
-		selectedBuilding.setDecoration("idol") #Replace "idol" with chosen decoration
-		#At this point building instance is ready
+		# TEMP CODE AHEAD
+		selectedBuilding.setDecoration("idol")
+		grid
+		
+		# TEMP CODE ABOVE
 		
 		changeState(building)
 		
