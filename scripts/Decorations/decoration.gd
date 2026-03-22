@@ -6,26 +6,27 @@ const DECORATIONS_JSON_PATH = "res://scripts/Decorations/decorations_list.json"
 
 const SPRITE_FOLDER_PATH = "res://assets/Decorations/"
 
+const DECORATION = preload("uid://b6aj21ev176s3")
+
+# 
 @export var decoName: String
 @export var sprite: Sprite3D
+@export var size: int
+@export var emotionDict: Dictionary
+
 @export var collisionShape: CollisionShape3D
 
 @export var influence_area: Area3D
 
-@export var Emotion_Trigger: Dictionary[Global.HUMAN, Global.EMOTIONS] = {
-	Global.HUMAN.JOE : Global.EMOTIONS.FEAR,
-	Global.HUMAN.INFLUENCER : Global.EMOTIONS.FEAR,
-	Global.HUMAN.FISHERMAN : Global.EMOTIONS.FEAR,
-	Global.HUMAN.BUSINESSMAN : Global.EMOTIONS.FEAR,
-	Global.HUMAN.HIKER : Global.EMOTIONS.FEAR,
-	Global.HUMAN.CULTIST : Global.EMOTIONS.FEAR,
-	Global.HUMAN.INVESTIGATOR : Global.EMOTIONS.FEAR,
-	Global.HUMAN.CONVICT: Global.EMOTIONS.FEAR
-	}
+@export var Emotion_Trigger: Dictionary[Global.HUMAN, Global.EMOTIONS]
+
+var boostedEmotions: Array
 
 var active: bool = true
 
 var decorationsData
+
+var myResource: Resource
 
 func setDecoration(decorationName: String):
 	pass
@@ -57,4 +58,12 @@ func deactivate():
 func activate():
 	active = true
 	collisionShape.disabled = false
+
+static func construct(resource: deco) -> Decoration:
+	var selectedBuilding: Decoration = DECORATION.instantiate()
+	selectedBuilding.myResource = resource
 	
+	selectedBuilding.collisionShape.scale.x = resource.size
+	selectedBuilding.collisionShape.scale.z = resource.size
+	selectedBuilding.sprite.texture = resource.myTexture
+	return selectedBuilding

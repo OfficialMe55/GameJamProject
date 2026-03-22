@@ -47,7 +47,7 @@ corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdt2y"]
 
-[node name="Ui" type="Control" node_paths=PackedStringArray("shopUi")]
+[node name="Ui" type="Control" node_paths=PackedStringArray("shopUi", "inventory")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +56,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_8dubc")
 shopUi = NodePath("shopUi")
+inventory = NodePath("inventory")
 
 [node name="shopUi" type="PanelContainer" parent="." node_paths=PackedStringArray("tab_container")]
 visible = false
@@ -233,11 +234,12 @@ myEmotion = 5
 [node name="Label2" type="Label" parent="HUD/Orbs/MarginContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="inventory" type="Control" parent="."]
+[node name="inventory" type="Control" parent="." node_paths=PackedStringArray("ui")]
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 script = ExtResource("12_vsj0x")
+ui = NodePath("..")
 
 [node name="PanelContainer" type="PanelContainer" parent="inventory"]
 layout_mode = 0

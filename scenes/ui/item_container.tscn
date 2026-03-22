@@ -1,28 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://b71ug03gohb7s"]
+[gd_scene load_steps=2 format=3 uid="uid://b71ug03gohb7s"]
 
 [ext_resource type="Script" uid="uid://c0spkqt74b7bv" path="res://scripts/ui/inventory/deco_inv.gd" id="1_b73rr"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gmxdx"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cyloj"]
-bg_color = Color(0.461258, 0.59147185, 0.88996696, 1)
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0.9232389, 0.79581773, 0.18095696, 1)
-border_blend = true
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[node name="PanelContainer" type="PanelContainer"]
-theme_override_styles/panel = SubResource("StyleBoxFlat_gmxdx")
+[node name="PanelContainer" type="Button" node_paths=PackedStringArray("nameLabel")]
+offset_right = 112.0
+offset_bottom = 70.0
 script = ExtResource("1_b73rr")
+nameLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/nameLabel")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
+layout_mode = 0
+offset_right = 112.0
+offset_bottom = 70.0
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(70, 70)
@@ -34,9 +23,8 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer/MarginContainer"]
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_cyloj")
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -61,3 +49,5 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "name"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

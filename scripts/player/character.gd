@@ -28,6 +28,8 @@ var gridMap: GridMapRoot
 @onready var shop: Node = $states/shop
 @onready var building: Node = $states/building
 @onready var navRegion: NavigationRegion3D = $"../NavigationRegion3D"
+@onready var inventory: Node = $states/inventory
+
 var currentState: State
 
 var isInInteractionBox: bool
@@ -47,7 +49,7 @@ func _ready() -> void:
 	gridMap = $"../NavigationRegion3D/plane/GridMapRoot"
 	camera = $"../Camera3D"
 	
-	
+																										
 func _physics_process(_delta: float):
 	#update state
 	currentState.update(_delta)
@@ -87,17 +89,20 @@ func interact():
 		return
 		
 	if Input.is_action_just_pressed("Inventory"):
-		#Replace with inventory stuff
-		
-		# TEMP CODE AHEAD
-		selectedBuilding = decorations_scene.instantiate()
-		selectedBuilding.setDecoration("idol")
-		selectedBuilding.loadSprite("Idol_PLACEHOLDER")
-		gridMap.add_child(selectedBuilding)
-		# TEMP CODE ABOVE
-		changeState(building)
+		changeState(inventory)
 
+func inventory_function(resource: deco):
+	selectedBuilding = decorations_scene.instantiate()
+	selectedBuilding.setDecoration("idol")
+	selectedBuilding.loadSprite("Idol_PLACEHOLDER")
+	gridMap.add_child(selectedBuilding)
+	
+	selectedBuilding = Decoration.construct(resource)
+	gridMap.add_child(selectedBuilding)
 
+func deco_selected(resource):
+	inventory_function(resource)
+	changeState(building)
 
 func navMovement():
 	if navigationTarget:

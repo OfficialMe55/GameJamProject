@@ -5,4 +5,5 @@
 [resource]
 resource_name = "testDeco"
 script = ExtResource("1_hyhlr")
+myName = "d2"
 metadata/_custom_type_script = "uid://c67t0sd70mt5a"

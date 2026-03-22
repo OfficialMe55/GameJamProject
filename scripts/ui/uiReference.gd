@@ -5,6 +5,7 @@ class_name UiParent
 @export var shopUi: Control
 @export var player: myPlayer
 @export var playerData: PlayerData
+@export var inventory: Control
 
 signal collectedEmotion(emotion)
 

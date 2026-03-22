@@ -4,8 +4,11 @@ const path: String = "res://resourcers/decos/"
 
 @onready var targetGrid: GridContainer = $PanelContainer/MarginContainer/GridContainer ## destination for new deco items
 
+@export var ui: UiParent
 
 func _ready() -> void:
+	visible = false
+	
 	var dir = DirAccess.open("res://resourcers/decos/")
 	
 	if dir:
@@ -18,7 +21,8 @@ func _ready() -> void:
 			var res:Resource = load(path)
 			print(res.resource_path)
 			if res:
-				targetGrid.add_child(itemContainer.construct(res, i))
+				targetGrid.add_child(itemContainer.construct(res, i, ui))
+				
 				i += 1
 			
 			file_name = dir.get_next()

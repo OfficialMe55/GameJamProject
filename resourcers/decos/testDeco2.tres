@@ -4,4 +4,8 @@
 
 [resource]
 script = ExtResource("1_lh55k")
+inter_area_size = null
+myName = "d1"
+Emotion_Trigger = null
+boostedPeople = Array[int]([0])
 metadata/_custom_type_script = "uid://c67t0sd70mt5a"
