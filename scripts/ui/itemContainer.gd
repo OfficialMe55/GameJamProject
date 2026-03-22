@@ -1,7 +1,6 @@
 extends PanelContainer
 
-class_name ItemContainer
-
+class_name ItemContainer 
 @export var nameLabel: Label
 @export var prizeLabel: Label
 @export var stockLabel: Label
@@ -23,7 +22,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-static func createItemContainer(itemName: String, prize: float, stock: int) -> ItemContainer:
+static func createItemContainer(itemName: String, prize: float, stock: int) -> ItemContainer: ##ATTENTION OLD !!!!
 	var new_item_container: ItemContainer = ITEM_CONTAINER.instantiate()
 	new_item_container.itemName = itemName
 	new_item_container.prize = prize

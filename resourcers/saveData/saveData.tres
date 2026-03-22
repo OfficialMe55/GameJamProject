@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="SaveData" load_steps=2 format=3 uid="uid://cphki3mht1juw"]
+
+[ext_resource type="Script" uid="uid://cigp50h5qikb" path="res://scripts/resources/saveData.gd" id="1_gmww5"]
+
+[resource]
+script = ExtResource("1_gmww5")
+decoCountArray = [0, 0]
+test = 3
+metadata/_custom_type_script = "uid://cigp50h5qikb"
