@@ -49,7 +49,10 @@ func _on_influence_area_area_entered(area: Area3D) -> void:
 		return
 	if area.get_parent() is myHuman:
 		var human = area.get_parent()
-		human.emotions.currentEmotion = Emotion_Trigger.get(human.myHumanType)
+		if myResource == null:
+			return
+		else:
+			human.emotions.currentEmotion = myResource.Emotion_Trigger.get(human.myHumanType)
 
 func deactivate():
 	active = false
@@ -62,9 +65,9 @@ func activate():
 static func construct(resource: deco) -> Decoration:
 	var selectedBuilding: Decoration = DECORATION.instantiate()
 	selectedBuilding.myResource = resource
-	
-	return selectedBuilding
 	selectedBuilding.sprite.texture = resource.myTexture
+	return selectedBuilding
+	
 	selectedBuilding.collisionShape.scale.x = resource.size
 	selectedBuilding.collisionShape.scale.z = resource.size
 	

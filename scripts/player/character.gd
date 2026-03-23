@@ -143,7 +143,7 @@ func build():
 	selectedBuilding.deactivate()
 	selectedBuilding.sprite.transparency = 0.2
 
-	var DecorationSize = 1 #temporary ugly variable. To be replaced by size collected from resource
+	var DecorationSize = selectedBuilding.myResource.size #temporary ugly variable. To be replaced by size collected from resource
 	var hovered_cell: cell = camera.Get_Cell_From_Mouse_Position()
 	var building_ghost_position: Vector3 = gridMap.Get_Position_From_Cell(hovered_cell.gridPosition, selectedBuilding, DecorationSize)
 	selectedBuilding.position = building_ghost_position + GHOST_BUILDING_OFFSET
