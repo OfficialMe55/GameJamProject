@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_gmww5")
-decoCountArray = [0, 0]
+decoCountArray = Array[int]([0, 1])
 test = 3
 metadata/_custom_type_script = "uid://cigp50h5qikb"

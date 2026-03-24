@@ -8,6 +8,7 @@ const DECORATION = preload("uid://b6aj21ev176s3")
 
 
 @export var nameLabel: Label
+@export var count_label: Label
 @export var textureNode: TextureRect
 
 var myResource: Resource
@@ -22,7 +23,7 @@ static func construct(resource: deco, myPosInCountArray, ui: UiParent) -> itemCo
 	var newItemContainer: itemContainer = ITEM_CONTAINER.instantiate()
 	newItemContainer.myResource = resource
 	
-	newItemContainer.myCount = SAVE_DATA.decoCountArray[myPosInCountArray]
+	newItemContainer.count_label.text = str(SAVE_DATA.decoCountArray[myPosInCountArray])
 	newItemContainer.textureNode.texture = resource.myIcon
 	
 	newItemContainer.nameLabel.text = resource.myName

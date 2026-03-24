@@ -14,11 +14,12 @@ bg_color = Color(0, 0, 0, 0.17254902)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5tew8"]
 
-[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("nameLabel", "textureNode")]
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("nameLabel", "count_label", "textureNode")]
 offset_right = 112.0
 offset_bottom = 70.0
 script = ExtResource("1_b73rr")
 nameLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/nameLabel")
+count_label = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/countLabel")
 textureNode = NodePath("HBoxContainer/MarginContainer/TextureRect")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
