@@ -1,4 +1,4 @@
-class_name itemContainer extends Button
+class_name itemContainer extends PanelContainer
 
 const ITEM_CONTAINER = preload("uid://b71ug03gohb7s")
 

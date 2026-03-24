@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://b71ug03gohb7s"]
+[gd_scene load_steps=7 format=3 uid="uid://b71ug03gohb7s"]
 
 [ext_resource type="Script" uid="uid://c0spkqt74b7bv" path="res://scripts/ui/inventory/deco_inv.gd" id="1_b73rr"]
 
-[node name="PanelContainer" type="Button" node_paths=PackedStringArray("nameLabel", "textureNode")]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b73rr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b73rr"]
+bg_color = Color(0, 0, 0, 0.13333334)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6hcm7"]
+bg_color = Color(0, 0, 0, 0.17254902)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5lso"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5tew8"]
+
+[node name="PanelContainer" type="PanelContainer" node_paths=PackedStringArray("nameLabel", "textureNode")]
 offset_right = 112.0
 offset_bottom = 70.0
 script = ExtResource("1_b73rr")
@@ -10,9 +22,7 @@ nameLabel = NodePath("HBoxContainer/MarginContainer2/VBoxContainer/nameLabel")
 textureNode = NodePath("HBoxContainer/MarginContainer/TextureRect")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 112.0
-offset_bottom = 70.0
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
 custom_minimum_size = Vector2(70, 70)
@@ -26,6 +36,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
 layout_mode = 2
+stretch_mode = 4
 
 [node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer"]
 layout_mode = 2
@@ -51,4 +62,12 @@ size_flags_vertical = 6
 theme_override_font_sizes/font_size = 10
 text = "name"
 
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b73rr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_b73rr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6hcm7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_l5lso")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5tew8")
+
+[connection signal="button_up" from="Button" to="." method="_on_pressed"]
