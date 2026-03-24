@@ -75,3 +75,7 @@ cancel_Place={
 3d_physics/layer_3="Player"
 3d_physics/layer_4="Human"
 3d_physics/layer_5="Mouse Raycast for cells"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
