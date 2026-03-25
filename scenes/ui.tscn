@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://co0r6gj64kibh"]
+[gd_scene load_steps=28 format=3 uid="uid://co0r6gj64kibh"]
 
 [ext_resource type="Script" uid="uid://cvolqrwdeo72" path="res://scripts/ui/uiReference.gd" id="1_8dubc"]
 [ext_resource type="Script" uid="uid://cl38kgjaqku7f" path="res://scripts/ui/ui.gd" id="1_nt7q6"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://d5vc5bdfpnds" path="res://assets/Emotion Orbs/love.png" id="11_h1mc3"]
 [ext_resource type="PackedScene" uid="uid://b71ug03gohb7s" path="res://scenes/ui/item_container.tscn" id="12_6rmj2"]
 [ext_resource type="Script" uid="uid://cax3bmnebolq8" path="res://scripts/ui/inventory/inventory.gd" id="12_vsj0x"]
+[ext_resource type="Script" uid="uid://mcke6erd40fm" path="res://scripts/ui/fishing/fish.gd" id="14_qsv74"]
+[ext_resource type="Script" uid="uid://dyie5r86ckrcm" path="res://scripts/ui/fishing/target.gd" id="15_h1mc3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4jx1"]
 
@@ -46,6 +48,18 @@ corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gdt2y"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vsj0x"]
+vertices = PackedVector2Array(950, 503.6328, 660.3672, 555.6172, 712.3594, 266, 950, 266)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(960, 512, 960, 256, 704, 256, 704, 512)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsj0x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qsv74"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cof4p"]
 
 [node name="Ui" type="Control" node_paths=PackedStringArray("shopUi", "inventory")]
 layout_mode = 3
@@ -235,6 +249,7 @@ myEmotion = 5
 layout_mode = 2
 
 [node name="inventory" type="Control" parent="." node_paths=PackedStringArray("ui")]
+visible = false
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -264,7 +279,61 @@ columns = 50
 [node name="PanelContainer" parent="inventory/PanelContainer/MarginContainer/GridContainer" instance=ExtResource("12_6rmj2")]
 custom_minimum_size = Vector2(150, 100)
 layout_mode = 2
-text = "dont click"
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 640.0
+offset_top = 320.0
+offset_right = 1088.0
+offset_bottom = 576.0
+
+[node name="fishing" type="Node2D" parent="Control"]
+
+[node name="unused" type="NavigationRegion2D" parent="Control/fishing"]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_vsj0x")
+navigation_layers = 2
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="Control/fishing/unused"]
+position = Vector2(832, 384)
+radius = 20.0
+vertices = PackedVector2Array(0, 0)
+avoidance_layers = 2
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="Control/fishing/unused"]
+position = Vector2(744, 472)
+motion_mode = 1
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Control/fishing/unused/CharacterBody2D"]
+avoidance_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/fishing/unused/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_vsj0x")
+
+[node name="fish" type="Area2D" parent="Control/fishing" node_paths=PackedStringArray("target")]
+position = Vector2(712, 552)
+script = ExtResource("14_qsv74")
+target = NodePath("../target")
+speed = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/fishing/fish"]
+shape = SubResource("CircleShape2D_qsv74")
+
+[node name="target" type="Area2D" parent="Control/fishing" node_paths=PackedStringArray("keepInArea")]
+script = ExtResource("15_h1mc3")
+keepInArea = NodePath("../KeepInArea")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/fishing/target"]
+shape = SubResource("CircleShape2D_cof4p")
+
+[node name="KeepInArea" type="Polygon2D" parent="Control/fishing"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(640, 320, 1088, 320, 1088, 576, 640, 576)
 
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect" method="_on_ui_collected_emotion"]
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect2" method="_on_ui_collected_emotion"]
