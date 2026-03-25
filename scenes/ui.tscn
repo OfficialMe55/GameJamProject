@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://co0r6gj64kibh"]
+[gd_scene load_steps=29 format=3 uid="uid://co0r6gj64kibh"]
 
 [ext_resource type="Script" uid="uid://cvolqrwdeo72" path="res://scripts/ui/uiReference.gd" id="1_8dubc"]
 [ext_resource type="Script" uid="uid://cl38kgjaqku7f" path="res://scripts/ui/ui.gd" id="1_nt7q6"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://cax3bmnebolq8" path="res://scripts/ui/inventory/inventory.gd" id="12_vsj0x"]
 [ext_resource type="Script" uid="uid://mcke6erd40fm" path="res://scripts/ui/fishing/fish.gd" id="14_qsv74"]
 [ext_resource type="Script" uid="uid://dyie5r86ckrcm" path="res://scripts/ui/fishing/target.gd" id="15_h1mc3"]
+[ext_resource type="Script" uid="uid://c34jal6vbhni5" path="res://scripts/ui/fishing/keep_in_area.gd" id="16_cof4p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x4jx1"]
 
@@ -334,6 +335,8 @@ shape = SubResource("CircleShape2D_cof4p")
 [node name="KeepInArea" type="Polygon2D" parent="Control/fishing"]
 color = Color(1, 1, 1, 0)
 polygon = PackedVector2Array(640, 320, 1088, 320, 1088, 576, 640, 576)
+uv = PackedVector2Array(640, 320, 1088, 320, 1088, 576, 640, 576)
+script = ExtResource("16_cof4p")
 
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect" method="_on_ui_collected_emotion"]
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect2" method="_on_ui_collected_emotion"]

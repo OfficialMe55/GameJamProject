@@ -13,6 +13,7 @@ config_version=5
 config/name="GameJamProject"
 run/main_scene="uid://dr0jd8wuvp3ch"
 config/features=PackedStringArray("4.5", "Forward Plus")
+run/max_fps=165
 config/icon="res://icon.svg"
 
 [autoload]

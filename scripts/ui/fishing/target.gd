@@ -6,4 +6,4 @@ func newPos():
 	pass
 
 func _ready() -> void:
-	pass
+	print(keepInArea.polygon)
