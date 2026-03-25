@@ -21,7 +21,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("CylinderShape3D_cs1fd")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.5, 0, 0, 0, 0.4330127, 0.25, 0, -0.25, 0.4330127, 0, 1.0949383, -0.4649968)
+transform = Transform3D(0.5, 0, 0, 0, 0.4330127, 0.25, 0, -0.25, 0.4330127, 0, 1.0949383, -0.22818756)
 texture = ExtResource("1_toofy")
 
 [node name="InfluenceArea" type="Area3D" parent="."]
