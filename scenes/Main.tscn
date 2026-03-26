@@ -205,7 +205,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.520475, 0.1552229, -12.683
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Ui" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("7_jlsqs")]
-visible = false
 player = NodePath("../../Player")
 
 [node name="Human" parent="." instance=ExtResource("6_c01mt")]

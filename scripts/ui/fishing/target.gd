@@ -1,9 +1,25 @@
 extends Area2D
 
 @export var keepInArea: Polygon2D
+@export var fish: Node
 
-func newPos():
-	pass
+var rng = RandomNumberGenerator.new()
+
+var newPos: Vector2
+
+func generateNewPos():
+	newPos.x = rng.randf_range(keepInArea.left, keepInArea.right)
+	newPos.y = rng.randf_range(keepInArea.up, keepInArea.down)
+	position = newPos
+	fish.setVectorToTarget()
 
 func _ready() -> void:
-	print(keepInArea.polygon)
+	generateNewPos()
+
+func hitWall():
+	generateNewPos()
+
+
+func _on_timer_timeout() -> void:
+	generateNewPos()
+	print(position)
