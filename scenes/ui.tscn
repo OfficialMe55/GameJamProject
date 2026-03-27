@@ -404,32 +404,19 @@ script = ExtResource("21_ycmcx")
 min = 0.5
 max = 1.0
 
-[node name="hook" type="Area2D" parent="fishing/fishing" node_paths=PackedStringArray("keepInBox")]
+[node name="hook" type="Area2D" parent="fishing/fishing" node_paths=PackedStringArray("keepInBox", "progressBar")]
 position = Vector2(656, 336)
 script = ExtResource("19_jkdwc")
 keepInBox = NodePath("../bigKeepInArea")
 termVelPos = Vector2(1, 1.5)
 termVelNeg = Vector2(1, -1)
 acSpeed = Vector2(0.03, 0.03)
+progressBar = NodePath("../../ProgressBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fishing/fishing/hook"]
 shape = SubResource("RectangleShape2D_rlppe")
 
 [node name="Sprite2D" type="Sprite2D" parent="fishing/fishing/hook"]
-texture = ExtResource("20_rlppe")
-
-[node name="hook2" type="Area2D" parent="fishing/fishing" node_paths=PackedStringArray("keepInBox")]
-position = Vector2(656, 336)
-script = ExtResource("19_jkdwc")
-keepInBox = NodePath("../bigKeepInArea")
-termVelPos = Vector2(1, 1.5)
-termVelNeg = Vector2(1, -1)
-acSpeed = Vector2(0.03, 0.03)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fishing/fishing/hook2"]
-shape = SubResource("RectangleShape2D_rlppe")
-
-[node name="Sprite2D" type="Sprite2D" parent="fishing/fishing/hook2"]
 texture = ExtResource("20_rlppe")
 
 [node name="bigKeepInArea" type="Polygon2D" parent="fishing/fishing"]
@@ -444,5 +431,6 @@ script = ExtResource("16_cof4p")
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect5" method="_on_ui_collected_emotion"]
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect6" method="_on_ui_collected_emotion"]
 [connection signal="area_entered" from="fishing/fishing/unused/border/vertical" to="fishing/fishing/unused/border/vertical" method="_on_area_entered"]
+[connection signal="area_entered" from="fishing/fishing/fish" to="fishing/fishing/hook" method="_on_fish_area_entered"]
 [connection signal="timeout" from="fishing/fishing/target/Timer" to="fishing/fishing/target" method="_on_timer_timeout"]
 [connection signal="timeout" from="fishing/fishing/target/Timer" to="fishing/fishing/target/Timer" method="_on_timeout"]

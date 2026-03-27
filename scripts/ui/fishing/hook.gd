@@ -13,17 +13,6 @@ var lastPos: Vector2
 
 var boost = 0
 
-@export_group("Car Properties")
-@export_subgroup("Wheels", "wheel_")
-@export_subgroup("Wheels/Front", "front_wheel_")
-@export var front_wheel_strength = 10
-@export var front_wheel_mobility = 5
-@export_subgroup("Wheels/Rear", "rear_wheel_")
-@export var rear_wheel_strength = 8
-@export var rear_wheel_mobility = 3
-@export_subgroup("Wheels", "wheel_")
-@export var wheel_material: PhysicsMaterial
-
 func _ready() -> void:
 	pass
 
@@ -63,3 +52,26 @@ func _process(delta: float) -> void:
 		velocity.y = 0
 	if position.x == lastPos.x:
 		velocity.x = 0
+	
+	
+	progressACSpeed = move_toward(progressACSpeed, progressDir, .0001)
+	
+	progressVel += progressACSpeed
+	progressVel = clamp(progressVel, -progressDir, progressDir)
+	print(progressVel)
+	progressBar.value += progressVel
+	#remove
+	if Input.is_action_just_pressed("boost"):
+		progressDir = -.05
+
+@export var progressBar: ProgressBar
+
+var progressVel = 0
+var progressACSpeed = 0
+var inArea: bool
+var progressDir = -1
+
+func _on_fish_area_entered(area: Area2D) -> void:
+	if area == self:
+		inArea = true
+		progressDir = .05
