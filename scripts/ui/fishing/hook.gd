@@ -54,24 +54,50 @@ func _process(delta: float) -> void:
 		velocity.x = 0
 	
 	
-	progressACSpeed = move_toward(progressACSpeed, progressDir, .0001)
+	#progressACSpeed = move_toward(progressACSpeed, progressDir, .00002)
 	
+	#print("progressACSpeed: " + str(progressACSpeed))
 	progressVel += progressACSpeed
-	progressVel = clamp(progressVel, -progressDir, progressDir)
-	print(progressVel)
+	progressVel = clamp(progressVel, -.05, .1)
+	#print("progressVel:     " + str(progressVel))
+	var lastProgress = progressBar.value
 	progressBar.value += progressVel
-	#remove
-	if Input.is_action_just_pressed("boost"):
-		progressDir = -.05
+	
+	if progressBar.value == 100:
+		lockProgressBar = true
+		if lastProgress != progressBar.value:
+			timer.start(2)
+	
+	# lock progressBar
+	if lockProgressBar:
+		progressBar.value = 100
+		if Input.is_action_just_pressed("interract") and inArea:
+			print("catched human")
 
-@export var progressBar: ProgressBar
+
 
 var progressVel = 0
 var progressACSpeed = 0
 var inArea: bool
-var progressDir = -1
+
+@export_group("Progress Bar")
+@export var progressBar: ProgressBar
+@export_range(0, .001, .000001) var progressAC: float
+@export var timer: Timer
+
+var lockProgressBar: bool = false
 
 func _on_fish_area_entered(area: Area2D) -> void:
 	if area == self:
 		inArea = true
-		progressDir = .05
+		progressACSpeed = progressAC
+		#if progressBar.value == 0 or progressBar.value == 100:
+
+
+func _on_fish_area_exited(area: Area2D) -> void:
+	if area == self:
+		inArea = false
+		progressACSpeed = -progressAC
+
+func lock_progress_bar_finished() -> void:
+	lockProgressBar = false
