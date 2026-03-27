@@ -11,7 +11,6 @@ func generateNewPos():
 	newPos.x = rng.randf_range(keepInArea.left, keepInArea.right)
 	newPos.y = rng.randf_range(keepInArea.up, keepInArea.down)
 	position = newPos
-	fish.setVectorToTarget()
 
 func _ready() -> void:
 	generateNewPos()
@@ -22,4 +21,3 @@ func hitWall():
 
 func _on_timer_timeout() -> void:
 	generateNewPos()
-	print(position)

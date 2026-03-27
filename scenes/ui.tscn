@@ -62,11 +62,6 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(960, 512, 960, 256, 704
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vsj0x"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qsv74"]
-radius = 32.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_cof4p"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cof4p"]
 size = Vector2(448, 8)
 
@@ -78,6 +73,11 @@ size = Vector2(8, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkdwc"]
 size = Vector2(8, 256)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qsv74"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cof4p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rlppe"]
 
@@ -301,7 +301,8 @@ layout_mode = 2
 
 [node name="fishing" type="Control" parent="."]
 anchors_preset = 0
-offset_right = 40.0
+offset_left = -64.0
+offset_right = -24.0
 offset_bottom = 40.0
 
 [node name="PanelContainer" type="PanelContainer" parent="fishing"]
@@ -310,6 +311,15 @@ offset_left = 640.0
 offset_top = 320.0
 offset_right = 1088.0
 offset_bottom = 576.0
+
+[node name="ProgressBar" type="ProgressBar" parent="fishing"]
+layout_mode = 0
+offset_left = 1088.0
+offset_top = 320.0
+offset_right = 1152.0
+offset_bottom = 576.0
+fill_mode = 3
+show_percentage = false
 
 [node name="fishing" type="Node2D" parent="fishing"]
 
@@ -333,6 +343,31 @@ avoidance_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fishing/fishing/unused/CharacterBody2D"]
 shape = SubResource("RectangleShape2D_vsj0x")
+
+[node name="border" type="Node2D" parent="fishing/fishing/unused"]
+visible = false
+position = Vector2(640, 320)
+
+[node name="vertical" type="Area2D" parent="fishing/fishing/unused/border"]
+script = ExtResource("17_f7tlh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fishing/fishing/unused/border/vertical"]
+position = Vector2(224, 260)
+shape = SubResource("RectangleShape2D_cof4p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="fishing/fishing/unused/border/vertical"]
+position = Vector2(224, -4)
+shape = SubResource("RectangleShape2D_8k7j3")
+
+[node name="horizontal" type="Area2D" parent="fishing/fishing/unused/border"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="fishing/fishing/unused/border/horizontal"]
+position = Vector2(-4, 128)
+shape = SubResource("RectangleShape2D_f7tlh")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="fishing/fishing/unused/border/horizontal"]
+position = Vector2(452, 128)
+shape = SubResource("RectangleShape2D_jkdwc")
 
 [node name="KeepInArea" type="Polygon2D" parent="fishing/fishing"]
 color = Color(1, 1, 1, 0)
@@ -369,42 +404,32 @@ script = ExtResource("21_ycmcx")
 min = 0.5
 max = 1.0
 
-[node name="border" type="Node2D" parent="fishing/fishing"]
-position = Vector2(640, 320)
-
-[node name="vertical" type="Area2D" parent="fishing/fishing/border"]
-script = ExtResource("17_f7tlh")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="fishing/fishing/border/vertical"]
-position = Vector2(224, 260)
-shape = SubResource("RectangleShape2D_cof4p")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="fishing/fishing/border/vertical"]
-position = Vector2(224, -4)
-shape = SubResource("RectangleShape2D_8k7j3")
-
-[node name="horizontal" type="Area2D" parent="fishing/fishing/border"]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="fishing/fishing/border/horizontal"]
-position = Vector2(-4, 128)
-shape = SubResource("RectangleShape2D_f7tlh")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="fishing/fishing/border/horizontal"]
-position = Vector2(452, 128)
-shape = SubResource("RectangleShape2D_jkdwc")
-
 [node name="hook" type="Area2D" parent="fishing/fishing" node_paths=PackedStringArray("keepInBox")]
 position = Vector2(656, 336)
 script = ExtResource("19_jkdwc")
 keepInBox = NodePath("../bigKeepInArea")
-termVelPos = 1.0
-termVelNeg = -1.5
-acSpeed = 0.03
+termVelPos = Vector2(1, 1.5)
+termVelNeg = Vector2(1, -1)
+acSpeed = Vector2(0.03, 0.03)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="fishing/fishing/hook"]
 shape = SubResource("RectangleShape2D_rlppe")
 
 [node name="Sprite2D" type="Sprite2D" parent="fishing/fishing/hook"]
+texture = ExtResource("20_rlppe")
+
+[node name="hook2" type="Area2D" parent="fishing/fishing" node_paths=PackedStringArray("keepInBox")]
+position = Vector2(656, 336)
+script = ExtResource("19_jkdwc")
+keepInBox = NodePath("../bigKeepInArea")
+termVelPos = Vector2(1, 1.5)
+termVelNeg = Vector2(1, -1)
+acSpeed = Vector2(0.03, 0.03)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fishing/fishing/hook2"]
+shape = SubResource("RectangleShape2D_rlppe")
+
+[node name="Sprite2D" type="Sprite2D" parent="fishing/fishing/hook2"]
 texture = ExtResource("20_rlppe")
 
 [node name="bigKeepInArea" type="Polygon2D" parent="fishing/fishing"]
@@ -418,6 +443,6 @@ script = ExtResource("16_cof4p")
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect4" method="_on_ui_collected_emotion"]
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect5" method="_on_ui_collected_emotion"]
 [connection signal="collectedEmotion" from="." to="HUD/Orbs/MarginContainer/HBoxContainer/TextureRect6" method="_on_ui_collected_emotion"]
+[connection signal="area_entered" from="fishing/fishing/unused/border/vertical" to="fishing/fishing/unused/border/vertical" method="_on_area_entered"]
 [connection signal="timeout" from="fishing/fishing/target/Timer" to="fishing/fishing/target" method="_on_timer_timeout"]
 [connection signal="timeout" from="fishing/fishing/target/Timer" to="fishing/fishing/target/Timer" method="_on_timeout"]
-[connection signal="area_entered" from="fishing/fishing/border/vertical" to="fishing/fishing/border/vertical" method="_on_area_entered"]
