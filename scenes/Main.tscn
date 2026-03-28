@@ -105,9 +105,10 @@ collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
 
-[node name="Player" parent="." node_paths=PackedStringArray("ui") instance=ExtResource("1_elqb8")]
+[node name="Player" parent="." node_paths=PackedStringArray("ui", "world") instance=ExtResource("1_elqb8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 ui = NodePath("../CanvasLayer/Ui")
+world = NodePath("..")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.038215637, -0.37453842, 0.32075882)

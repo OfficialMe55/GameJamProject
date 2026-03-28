@@ -32,4 +32,3 @@ func _process(delta: float) -> void:
 
 func hitWall():
 	position = lasPos
-	print("hitwall")

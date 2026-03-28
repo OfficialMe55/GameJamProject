@@ -14,6 +14,7 @@ var gridMap: GridMapRoot
 
 # essential connections
 @export var ui: UiParent
+@export var world: Node
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var decorations_scene = load("res://scenes/decorations/Decoration.tscn")
@@ -44,6 +45,8 @@ var navigationTarget: Vector3
 var camera: Camera3D
 
 func _ready() -> void:
+	Global.player = self
+	
 	currentState = default_movement
 	currentState.start()
 	gridMap = $"../NavigationRegion3D/plane/GridMapRoot"

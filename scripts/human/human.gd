@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 class_name myHuman
 
+const HUMAN = preload("uid://crsvqhcjq6pt")
+
+
 const SPEED: float = 5.0
 const GRAVITY: float = -3.0
 
@@ -54,7 +57,7 @@ func FreeRoam():
 			var next_path_pos := nav_agent.get_next_path_position()
 			var navDirection := global_position.direction_to(next_path_pos)
 			velocity = navDirection * SPEED
-
+			
 			if nav_agent.is_navigation_finished():
 				navigationTarget = Vector3.ZERO
 
@@ -65,3 +68,9 @@ func findNavigationTarget():
 	
 func getCarried():
 	global_position = player.humanHook.global_position
+
+static func instantiateHuman(humanType: Global.HUMAN, position: Vector3) -> myHuman:
+	var newHuman:myHuman = HUMAN.instantiate()
+	newHuman.position = position
+	newHuman.myHumanType = humanType
+	return newHuman

@@ -6,6 +6,7 @@ class_name UiParent
 @export var player: myPlayer
 @export var playerData: PlayerData
 @export var inventory: Control
+@export var fishing: Node
 
 signal collectedEmotion(emotion)
 

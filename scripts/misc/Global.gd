@@ -4,6 +4,8 @@ const DEBUG: bool = true
 
 const FLOATPRECISION = 1000000
 
+var player: myPlayer
+
 enum EMOTIONS {
 	FEAR,
 	ANGER,

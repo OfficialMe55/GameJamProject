@@ -27,6 +27,4 @@ func interact():
 		playerNode.changeState(playerNode.navigationMovement)
 		playerNode.navigationTarget = fishingSpot.global_position
 	else:
-		print("start fishing!!!!!!!!!")
-		print("returning to default movement state, instead of fishing state")
-		playerNode.changeState(playerNode.default_movement) #Change to fishing in the future!!
+		playerNode.changeState(playerNode.fishing)

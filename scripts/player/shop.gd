@@ -9,5 +9,5 @@ func start():
 func update(delta):
 	pass
 
-func End():
+func end():
 	pass

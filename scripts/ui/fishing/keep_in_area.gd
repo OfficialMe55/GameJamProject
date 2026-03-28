@@ -9,10 +9,7 @@ var right = polygon[2].x
 var rect: Rect2
 
 func _ready() -> void:
-	print(polygon)
-	return
 	rect = Rect2(Vector2(left, up), Vector2(down, right))
-	print(rect)
 
 func trapVector(vector: Vector2):
 	var newVector = Vector2()

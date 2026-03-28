@@ -1,0 +1,152 @@
+[gd_scene load_steps=19 format=3 uid="uid://m2ni81y81cwq"]
+
+[ext_resource type="Script" uid="uid://bf23xwt1ydqw6" path="res://scripts/ui/fishing/vertical.gd" id="1_7hinf"]
+[ext_resource type="Script" uid="uid://kweayt0s2ir5" path="res://scripts/ui/fishing/fishing.gd" id="1_ouqcw"]
+[ext_resource type="Script" uid="uid://c34jal6vbhni5" path="res://scripts/ui/fishing/keep_in_area.gd" id="2_ouqcw"]
+[ext_resource type="Script" uid="uid://mcke6erd40fm" path="res://scripts/ui/fishing/fish.gd" id="3_b25vu"]
+[ext_resource type="Texture2D" uid="uid://d3brx2ktm3ony" path="res://assets/Main misc/TileSet2.png" id="4_f4bh2"]
+[ext_resource type="Script" uid="uid://dyie5r86ckrcm" path="res://scripts/ui/fishing/target.gd" id="5_cotpo"]
+[ext_resource type="Script" uid="uid://bxlgd0cyeiiun" path="res://scripts/ui/fishing/timer.gd" id="6_k3aob"]
+[ext_resource type="Script" uid="uid://btmky3o8hfr57" path="res://scripts/ui/fishing/hook.gd" id="7_xmk3g"]
+[ext_resource type="Texture2D" uid="uid://cw8sayn1ysioe" path="res://assets/ground.png" id="8_vtsvd"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_vsj0x"]
+vertices = PackedVector2Array(950, 503.6328, 660.3672, 555.6172, 712.3594, 266, 950, 266)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(960, 512, 960, 256, 704, 256, 704, 512)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsj0x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cof4p"]
+size = Vector2(448, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k7j3"]
+size = Vector2(448, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7tlh"]
+size = Vector2(8, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkdwc"]
+size = Vector2(8, 256)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qsv74"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cof4p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rlppe"]
+
+[node name="fishing" type="Node2D"]
+script = ExtResource("1_ouqcw")
+
+[node name="unused" type="NavigationRegion2D" parent="."]
+visible = false
+navigation_polygon = SubResource("NavigationPolygon_vsj0x")
+navigation_layers = 2
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="unused"]
+position = Vector2(832, 384)
+radius = 20.0
+vertices = PackedVector2Array(0, 0)
+avoidance_layers = 2
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="unused"]
+position = Vector2(744, 472)
+motion_mode = 1
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="unused/CharacterBody2D"]
+avoidance_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="unused/CharacterBody2D"]
+shape = SubResource("RectangleShape2D_vsj0x")
+
+[node name="border" type="Node2D" parent="unused"]
+visible = false
+position = Vector2(640, 320)
+
+[node name="vertical" type="Area2D" parent="unused/border"]
+script = ExtResource("1_7hinf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="unused/border/vertical"]
+position = Vector2(224, 260)
+shape = SubResource("RectangleShape2D_cof4p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="unused/border/vertical"]
+position = Vector2(224, -4)
+shape = SubResource("RectangleShape2D_8k7j3")
+
+[node name="horizontal" type="Area2D" parent="unused/border"]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="unused/border/horizontal"]
+position = Vector2(-4, 128)
+shape = SubResource("RectangleShape2D_f7tlh")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="unused/border/horizontal"]
+position = Vector2(452, 128)
+shape = SubResource("RectangleShape2D_jkdwc")
+
+[node name="KeepInArea" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(704, 384, 1024, 384, 1024, 512, 704, 512)
+uv = PackedVector2Array(640, 320, 1088, 320, 1088, 576, 640, 576)
+script = ExtResource("2_ouqcw")
+
+[node name="fish" type="Area2D" parent="." node_paths=PackedStringArray("target", "bigKeep")]
+position = Vector2(696, 536)
+script = ExtResource("3_b25vu")
+target = NodePath("../target")
+bigKeep = NodePath("../bigKeepInArea")
+speed = 1.0
+ac = 0.01
+
+[node name="Sprite2D" type="Sprite2D" parent="fish"]
+texture = ExtResource("4_f4bh2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="fish"]
+shape = SubResource("CircleShape2D_qsv74")
+
+[node name="target" type="Area2D" parent="." node_paths=PackedStringArray("keepInArea", "fish")]
+position = Vector2(880, 424)
+script = ExtResource("5_cotpo")
+keepInArea = NodePath("../KeepInArea")
+fish = NodePath("../fish")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="target"]
+shape = SubResource("CircleShape2D_cof4p")
+
+[node name="Timer" type="Timer" parent="target"]
+autostart = true
+script = ExtResource("6_k3aob")
+min = 0.5
+max = 1.0
+
+[node name="hook" type="Area2D" parent="." node_paths=PackedStringArray("keepInBox", "fishing", "timer")]
+position = Vector2(656, 336)
+script = ExtResource("7_xmk3g")
+keepInBox = NodePath("../bigKeepInArea")
+termVelPos = Vector2(1, 1.5)
+termVelNeg = Vector2(1, -1)
+acSpeed = Vector2(0.03, 0.03)
+fishing = NodePath("..")
+progressAC = 0.001
+timer = NodePath("Timer")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hook"]
+shape = SubResource("RectangleShape2D_rlppe")
+
+[node name="Sprite2D" type="Sprite2D" parent="hook"]
+texture = ExtResource("8_vtsvd")
+
+[node name="Timer" type="Timer" parent="hook"]
+
+[node name="bigKeepInArea" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(1056, 352, 1056, 544, 672, 544, 672, 352)
+script = ExtResource("2_ouqcw")
+
+[connection signal="area_entered" from="unused/border/vertical" to="unused/border/vertical" method="_on_area_entered"]
+[connection signal="area_entered" from="fish" to="hook" method="_on_fish_area_entered"]
+[connection signal="area_exited" from="fish" to="hook" method="_on_fish_area_exited"]
+[connection signal="timeout" from="target/Timer" to="target" method="_on_timer_timeout"]
+[connection signal="timeout" from="target/Timer" to="target/Timer" method="_on_timeout"]
+[connection signal="timeout" from="hook/Timer" to="hook" method="lock_progress_bar_finished"]

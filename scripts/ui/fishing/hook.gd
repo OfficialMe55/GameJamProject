@@ -13,8 +13,6 @@ var lastPos: Vector2
 
 var boost = 0
 
-func _ready() -> void:
-	pass
 
 var lastSpeed = 0
 
@@ -58,7 +56,7 @@ func _process(delta: float) -> void:
 	
 	#print("progressACSpeed: " + str(progressACSpeed))
 	progressVel += progressACSpeed
-	progressVel = clamp(progressVel, -.05, .1)
+	progressVel = clamp(progressVel, -.05, 1)
 	#print("progressVel:     " + str(progressVel))
 	var lastProgress = progressBar.value
 	progressBar.value += progressVel
@@ -71,9 +69,12 @@ func _process(delta: float) -> void:
 	# lock progressBar
 	if lockProgressBar:
 		progressBar.value = 100
-		if Input.is_action_just_pressed("interract") and inArea:
-			print("catched human")
+		if Input.is_action_just_pressed("chatchFish") and inArea:
+			Global.player.changeState(Global.player.default_movement)
 
+func _ready() -> void:
+	return
+	progressBar = fishing.progressBar
 
 
 var progressVel = 0
@@ -81,7 +82,8 @@ var progressACSpeed = 0
 var inArea: bool
 
 @export_group("Progress Bar")
-@export var progressBar: ProgressBar
+@export var fishing: Node
+@onready var progressBar: Node = $"../../ProgressBar"
 @export_range(0, .001, .000001) var progressAC: float
 @export var timer: Timer
 
@@ -91,7 +93,6 @@ func _on_fish_area_entered(area: Area2D) -> void:
 	if area == self:
 		inArea = true
 		progressACSpeed = progressAC
-		#if progressBar.value == 0 or progressBar.value == 100:
 
 
 func _on_fish_area_exited(area: Area2D) -> void:
