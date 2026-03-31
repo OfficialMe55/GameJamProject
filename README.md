@@ -4,9 +4,9 @@ An unfinished game about a monster fishing for humans.
 # Credit
 
 Artists:
-Echo The Neko Neko
+Echo The Neko Neko,
 Aquatic
 
 Programmers:
-Yanno
+Yanno,
 OfficialMe
