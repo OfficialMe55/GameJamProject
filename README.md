@@ -1,2 +1,2 @@
-# It's the best game ever btw
 # GameJamProject
+An unfinished game about a monster fishing for humans.
